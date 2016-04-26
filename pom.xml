@@ -15,7 +15,13 @@
       <scope>test</scope>
     </dependency>
 
-    <!-- Servlet Library -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>4.2.5.RELEASE</version>
+      </dependency>
+
+      <!-- Servlet Library -->
     <dependency>
       <groupId>javax.servlet</groupId>
       <artifactId>javax.servlet-api</artifactId>
