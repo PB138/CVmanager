@@ -30,6 +30,16 @@ public class XmlService {
     private static final String XML_CV_FOLDER = "cvxml";
 
     /**
+     * Removes users XML CV
+     * @param username username
+     */
+    public void removeXml(String username) {
+        File file = new File(createXmlPath(username));
+        if(file.exists())
+            file.delete();
+    }
+
+    /**
      * Serializes curriculum vitae into XML file in the cvxml folder using username for file name
      * @param username username
      * @param cv curriculum vitae
@@ -53,11 +63,15 @@ public class XmlService {
      * @throws IOException
      */
     private String createFile(String username) throws IOException {
-        String filepath = XML_CV_FOLDER + "/" + username + "_cv.xml";
+        String filepath = createXmlPath(username);
         File file = new File(filepath);
         if(!file.exists())
             file.createNewFile();
         return filepath;
+    }
+
+    private String createXmlPath(String username) {
+        return XML_CV_FOLDER + "/" + username + "_cv.xml";
     }
 
     /**
