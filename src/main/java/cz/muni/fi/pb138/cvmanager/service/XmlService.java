@@ -86,8 +86,7 @@ public class XmlService {
         DocumentBuilder builder = dbf.newDocumentBuilder();
         DOMImplementation impl = builder.getDOMImplementation();
         Document doc = impl.createDocument(null, CurriculumVitaeElement.CURRICULUM_VITAE.toString(), null);
-        if(cv.getPersonalInformation() != null)
-            appendWithPersonalInformation(doc, cv.getPersonalInformation());
+        appendWithPersonalInformation(doc, cv);
         if(cv.getPersonalProfile() != null)
             appendWithPersonalProfile(doc, cv.getPersonalProfile());
         if(cv.getWorkExperience() != null && !cv.getWorkExperience().isEmpty())
@@ -106,24 +105,24 @@ public class XmlService {
     }
 
     /**
-     * Appends DOM document with the given PersonalInformation
+     * Appends DOM document with the PersonalInformation
      * @param doc DOM document
-     * @param pi Personal Information
+     * @param cv Curriculum Vitae
      */
-    private void appendWithPersonalInformation(Document doc, PersonalInformation pi) {
+    private void appendWithPersonalInformation(Document doc, CurriculumVitae cv) {
         Node cvNode = doc.getDocumentElement();
         Element personalInformation = doc.createElement(CurriculumVitaeElement.PERSONAL_INFORMATION.toString());
         cvNode.appendChild(personalInformation);
-        if(!pi.getFullName().isEmpty())
-            addChildElement(doc, personalInformation, CurriculumVitaeElement.FULL_NAME.toString(), pi.getFullName());
-        if(!pi.getAddress().isEmpty())
-            addChildElement(doc, personalInformation, CurriculumVitaeElement.ADDRESS.toString(), pi.getAddress());
-        if(!pi.getBirthday().isEmpty())
-            addChildElement(doc, personalInformation, CurriculumVitaeElement.BIRTHDAY.toString(), pi.getBirthday());
-        if(pi.getContacts() != null && !pi.getContacts().isEmpty()) {
+        if(!cv.getFullName().isEmpty())
+            addChildElement(doc, personalInformation, CurriculumVitaeElement.FULL_NAME.toString(), cv.getFullName());
+        if(!cv.getAddress().isEmpty())
+            addChildElement(doc, personalInformation, CurriculumVitaeElement.ADDRESS.toString(), cv.getAddress());
+        if(!cv.getBirthday().isEmpty())
+            addChildElement(doc, personalInformation, CurriculumVitaeElement.BIRTHDAY.toString(), cv.getBirthday());
+        if(cv.getContacts() != null && !cv.getContacts().isEmpty()) {
             Element contacts = doc.createElement(CurriculumVitaeElement.CONTACTS.toString());
             personalInformation.appendChild(contacts);
-            for(Contact contact : pi.getContacts()) {
+            for(Contact contact : cv.getContacts()) {
                 List<Attribute> attributes = new ArrayList<Attribute>();
                 if(!contact.getId().isEmpty() && !contact.getValue().isEmpty())
                     attributes.add(new Attribute(CurriculumVitaeAttribute.ID.toString(), contact.getId()));

@@ -7,7 +7,10 @@ import java.util.List;
  */
 public class CurriculumVitae {
 
-    private PersonalInformation personalInformation;
+    private String fullName;
+    private String address;
+    private String birthday;
+    private List<Contact> contacts;
     private PersonalProfile personalProfile;
     private List<Work> workExperience;
     private List<Education> educations;
@@ -19,12 +22,36 @@ public class CurriculumVitae {
     public CurriculumVitae() {
     }
 
-    public PersonalInformation getPersonalInformation() {
-        return personalInformation;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setPersonalInformation(PersonalInformation personalInformation) {
-        this.personalInformation = personalInformation;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public String getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(String birthday) {
+        this.birthday = birthday;
+    }
+
+    public List<Contact> getContacts() {
+        return contacts;
+    }
+
+    public void setContacts(List<Contact> contacts) {
+        this.contacts = contacts;
     }
 
     public PersonalProfile getPersonalProfile() {
