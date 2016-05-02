@@ -4,9 +4,12 @@ import cz.muni.fi.pb138.cvmanager.entity.*;
 import cz.muni.fi.pb138.cvmanager.enumeration.CurriculumVitaeAttribute;
 import cz.muni.fi.pb138.cvmanager.enumeration.CurriculumVitaeElement;
 import org.springframework.stereotype.Service;
+import org.springframework.util.NumberUtils;
+import org.springframework.util.StringUtils;
 import org.w3c.dom.*;
 import org.w3c.dom.Node;
 import org.w3c.dom.Text;
+import org.xml.sax.SAXException;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -40,6 +43,34 @@ public class XmlService {
     }
 
     /**
+     * Loads curriculum vitae of the user from the XML file
+     * @param username User's name
+     * @return Curriculum vitae
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
+    public CurriculumVitae loadFromXml(String username) throws ParserConfigurationException,
+            IOException, SAXException {
+        DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+        DocumentBuilder builder = factory.newDocumentBuilder();
+        Document doc = builder.parse(createFile(username));
+        CurriculumVitae cv = new CurriculumVitae();
+        cv.setFullName(loadContent(doc, CurriculumVitaeElement.FULL_NAME.toString()));
+        cv.setAddress(loadContent(doc, CurriculumVitaeElement.ADDRESS.toString()));
+        cv.setBirthday(loadContent(doc, CurriculumVitaeElement.BIRTHDAY.toString()));
+        cv.setContacts(loadContacts(doc));
+        cv.setPersonalProfile(loadContent(doc, CurriculumVitaeElement.PERSONAL_PROFILE.toString()));
+        cv.setWorkExperience(loadWorkExperiences(doc));
+        cv.setEducations(loadEducations(doc));
+        cv.setAchievements(loadAchievements(doc));
+        cv.setLanguages(loadLanguages(doc));
+        cv.setSkills(loadSkills(doc));
+        cv.setHobbies(loadHobbies(doc));
+        return cv;
+    }
+
+    /**
      * Serializes curriculum vitae into XML file in the cvxml folder using username for file name
      * @param username username
      * @param cv curriculum vitae
@@ -56,6 +87,183 @@ public class XmlService {
         transformer.transform(domSource, result);
     }
 
+    //***************************************************************************
+    //************************* Load XML private methods ************************
+    //***************************************************************************
+
+    /**
+     * Returns Contacts from the DOM document as List
+     * @param doc DOM document
+     * @return List of Contacts
+     */
+    private List<Contact> loadContacts(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.CONTACT.toString());
+        List<Contact> contacts = new ArrayList<Contact>();
+        Element element;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Contact contact = new Contact();
+            element = (Element) nodeList.item(item);
+            contact.setValue(element.getTextContent());
+            contact.setId(element.getAttribute(CurriculumVitaeAttribute.ID.toString()));
+            contacts.add(contact);
+        }
+        return contacts;
+    }
+
+    /**
+     * Returns WorkExperiences from the DOM document as List
+     * @param doc DOM document
+     * @return List of Works
+     */
+    private List<Work> loadWorkExperiences(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.WORK_ITEM.toString());
+        List<Work> works = new ArrayList<Work>();
+        Element element;
+        int tempInt;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Work work = new Work();
+            element = (Element) nodeList.item(item);
+            work.setValue(element.getTextContent());
+            tempInt = toIntOrDefault(element.getAttribute(CurriculumVitaeAttribute.FROM.toString()));
+            if (tempInt != Integer.MIN_VALUE)
+                work.setFrom(tempInt);
+            tempInt = toIntOrDefault(element.getAttribute(CurriculumVitaeAttribute.TO.toString()));
+            if (tempInt != Integer.MIN_VALUE)
+                work.setTo(tempInt);
+            work.setCompany(element.getAttribute(CurriculumVitaeAttribute.COMPANY.toString()));
+            work.setPosition(element.getAttribute(CurriculumVitaeAttribute.POSITION.toString()));
+            works.add(work);
+        }
+        return works;
+    }
+
+    /**
+     * Returns Educations from the DOM document as List
+     * @param doc DOM document
+     * @return List of Educations
+     */
+    private List<Education> loadEducations(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.EDUCATION_ITEM.toString());
+        List<Education> educations = new ArrayList<Education>();
+        Element element;
+        int tempInt;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Education education = new Education();
+            element = (Element) nodeList.item(item);
+            education.setValue(element.getTextContent());
+            tempInt = toIntOrDefault(element.getAttribute(CurriculumVitaeAttribute.FROM.toString()));
+            if (tempInt != Integer.MIN_VALUE)
+                education.setFrom(tempInt);
+            tempInt = toIntOrDefault(element.getAttribute(CurriculumVitaeAttribute.TO.toString()));
+            if (tempInt != Integer.MIN_VALUE)
+                education.setTo(tempInt);
+            education.setSchool(element.getAttribute(CurriculumVitaeAttribute.SCHOOL.toString()));
+            educations.add(education);
+        }
+        return educations;
+    }
+
+    /**
+     * Returns Achievements from the DOM document as List
+     * @param doc DOM document
+     * @return List of Achievements
+     */
+    private List<Achievement> loadAchievements(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.ACHIEVEMENT_ITEM.toString());
+        List<Achievement> achievements = new ArrayList<Achievement>();
+        Element element;
+        int tempInt;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Achievement achievement = new Achievement();
+            element = (Element) nodeList.item(item);
+            achievement.setValue(element.getTextContent());
+            tempInt = toIntOrDefault(element.getAttribute(CurriculumVitaeAttribute.YEAR.toString()));
+            if (tempInt != Integer.MIN_VALUE)
+                achievement.setYear(tempInt);
+            achievement.setTitle(element.getAttribute(CurriculumVitaeAttribute.TITLE.toString()));
+            achievements.add(achievement);
+        }
+        return achievements;
+    }
+
+    /**
+     * Returns Languages from the DOM document as List
+     * @param doc DOM document
+     * @return List of Languages
+     */
+    private List<Language> loadLanguages(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.LANGUAGE_ITEM.toString());
+        List<Language> languages = new ArrayList<Language>();
+        Element element;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Language language = new Language();
+            element = (Element) nodeList.item(item);
+            language.setLang(element.getAttribute(CurriculumVitaeAttribute.LANGUAGE.toString()));
+            language.setLevel(element.getAttribute(CurriculumVitaeAttribute.LEVEL.toString()));
+            languages.add(language);
+        }
+        return languages;
+    }
+
+    /**
+     * Returns Skills from DOM document as List
+     * @param doc DOM document
+     * @return List of Skills
+     */
+    private List<Skill> loadSkills(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.SKILL_ITEM.toString());
+        List<Skill> skills = new ArrayList<Skill>();
+        Element element;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Skill skill = new Skill();
+            element = (Element) nodeList.item(item);
+            skill.setValue(element.getTextContent());
+            skill.setTitle(element.getAttribute(CurriculumVitaeAttribute.TITLE.toString()));
+            skills.add(skill);
+        }
+        return skills;
+    }
+
+    /**
+     * Returns Hobbies from DOM document as List
+     * @param doc DOM document
+     * @return List of Hobbies
+     */
+    private List<Hobby> loadHobbies(Document doc) {
+        NodeList nodeList = doc.getElementsByTagName(CurriculumVitaeElement.HOBBY_ITEM.toString());
+        List<Hobby> hobbies = new ArrayList<Hobby>();
+        Element element;
+        for (int item = 0; item < nodeList.getLength(); item++) {
+            Hobby hobby = new Hobby();
+            element = (Element) nodeList.item(item);
+            hobby.setValue(element.getTextContent());
+            hobby.setTitle(element.getAttribute(CurriculumVitaeAttribute.TITLE.toString()));
+            hobbies.add(hobby);
+        }
+        return hobbies;
+    }
+
+    /**
+     * Returns the content of the element with the specified name as String. If more elements with the specified
+     * name has been found the content of the first element will be returned. If no element with the specified name
+     * has been found null will be returned
+     * @param doc DOM document
+     * @param elementName Element name
+     * @return Element content as String or null
+     */
+    private String loadContent(Document doc, String elementName) {
+        NodeList nodeList = doc.getElementsByTagName(elementName);
+        List<String> contents = new ArrayList<String>();
+        Element element;
+        element = (Element) nodeList.item(0);
+        contents.add(element.getTextContent());
+        return !contents.isEmpty() ? contents.get(0).trim() : null;
+    }
+
+    //***************************************************************************
+    //*********************** Creating XML private methods **********************
+    //***************************************************************************
+
     /**
      * Creates file if doesn't exist. Transfer user name into an xml cv filename and path.
      * @param username Username
@@ -68,10 +276,6 @@ public class XmlService {
         if(!file.exists())
             file.createNewFile();
         return filepath;
-    }
-
-    private String createXmlPath(String username) {
-        return XML_CV_FOLDER + "/" + username + "_cv.xml";
     }
 
     /**
@@ -88,7 +292,7 @@ public class XmlService {
         Document doc = impl.createDocument(null, CurriculumVitaeElement.CURRICULUM_VITAE.toString(), null);
         appendWithPersonalInformation(doc, cv);
         if(cv.getPersonalProfile() != null)
-            appendWithPersonalProfile(doc, cv.getPersonalProfile());
+            appendWithPersonalProfile(doc, cv);
         if(cv.getWorkExperience() != null && !cv.getWorkExperience().isEmpty())
             appendWithWorkExperience(doc, cv.getWorkExperience());
         if(cv.getEducations() != null && !cv.getEducations().isEmpty())
@@ -135,12 +339,12 @@ public class XmlService {
     /**
      * Appends DOM document with PersonalProfile
      * @param doc DOM document
-     * @param pp Personal Profile
+     * @param cv Curriculum Vitae
      */
-    private void appendWithPersonalProfile(Document doc, PersonalProfile pp) {
+    private void appendWithPersonalProfile(Document doc, CurriculumVitae cv) {
         Node cvNode = doc.getDocumentElement();
         Element element = doc.createElement(CurriculumVitaeElement.PERSONAL_PROFILE.toString());
-        Text text = doc.createTextNode(pp.getValue());
+        Text text = doc.createTextNode(cv.getPersonalProfile());
         element.appendChild(text);
         cvNode.appendChild(element);
     }
@@ -291,6 +495,22 @@ public class XmlService {
     private void addText(Document doc, Element element, String text) {
         Text elementText = doc.createTextNode(text);
         element.appendChild(elementText);
+    }
+
+    private int toIntOrDefault(String str) {
+        try {
+            return Integer.parseInt(str);
+        } catch (NumberFormatException e) {
+            return Integer.MIN_VALUE;
+        }
+    }
+
+    //*******************************************************************
+    //************************** Base methods ***************************
+    //*******************************************************************
+
+    private String createXmlPath(String username) {
+        return XML_CV_FOLDER + "/" + username + "_cv.xml";
     }
 
     private class Attribute {

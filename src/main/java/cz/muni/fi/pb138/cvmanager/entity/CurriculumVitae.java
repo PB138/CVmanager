@@ -11,7 +11,7 @@ public class CurriculumVitae {
     private String address;
     private String birthday;
     private List<Contact> contacts;
-    private PersonalProfile personalProfile;
+    private String personalProfile;
     private List<Work> workExperience;
     private List<Education> educations;
     private List<Achievement> achievements;
@@ -54,11 +54,11 @@ public class CurriculumVitae {
         this.contacts = contacts;
     }
 
-    public PersonalProfile getPersonalProfile() {
+    public String getPersonalProfile() {
         return personalProfile;
     }
 
-    public void setPersonalProfile(PersonalProfile personalProfile) {
+    public void setPersonalProfile(String personalProfile) {
         this.personalProfile = personalProfile;
     }
 
