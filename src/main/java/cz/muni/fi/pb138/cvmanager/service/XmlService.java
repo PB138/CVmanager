@@ -86,6 +86,37 @@ public class XmlService {
         StreamResult result = new StreamResult(createFile(username));
         transformer.transform(domSource, result);
     }
+    
+    //udělal jsem tuto metodu public, protože ji potřebuji i ve svých třídách
+    /**
+     * Creates DOM document of the curriculum vitae
+     * @param cv Curriculum vitae
+     * @return DOM document
+     * @throws ParserConfigurationException
+     */
+    public Document createDocument(CurriculumVitae cv) throws ParserConfigurationException {
+        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+        dbf.setValidating(false);
+        DocumentBuilder builder = dbf.newDocumentBuilder();
+        DOMImplementation impl = builder.getDOMImplementation();
+        Document doc = impl.createDocument(null, CurriculumVitaeElement.CURRICULUM_VITAE.toString(), null);
+        appendWithPersonalInformation(doc, cv);
+        if(cv.getPersonalProfile() != null)
+            appendWithPersonalProfile(doc, cv);
+        if(cv.getWorkExperience() != null && !cv.getWorkExperience().isEmpty())
+            appendWithWorkExperience(doc, cv.getWorkExperience());
+        if(cv.getEducations() != null && !cv.getEducations().isEmpty())
+            appendWithEducations(doc, cv.getEducations());
+        if(cv.getAchievements() != null && !cv.getAchievements().isEmpty())
+            appendWithAchievements(doc, cv.getAchievements());
+        if(cv.getLanguages() != null && !cv.getLanguages().isEmpty())
+            appendWithLanguages(doc, cv.getLanguages());
+        if(cv.getSkills() != null && !cv.getSkills().isEmpty())
+            appendWithSkills(doc, cv.getSkills());
+        if(cv.getHobbies() != null && !cv.getHobbies().isEmpty())
+            appendWithHobbies(doc, cv.getHobbies());
+        return doc;
+    }
 
     //***************************************************************************
     //************************* Load XML private methods ************************
@@ -276,36 +307,6 @@ public class XmlService {
         if(!file.exists())
             file.createNewFile();
         return filepath;
-    }
-
-    /**
-     * Creates DOM document of the curriculum vitae
-     * @param cv Curriculum vitae
-     * @return DOM document
-     * @throws ParserConfigurationException
-     */
-    private Document createDocument(CurriculumVitae cv) throws ParserConfigurationException {
-        DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
-        dbf.setValidating(false);
-        DocumentBuilder builder = dbf.newDocumentBuilder();
-        DOMImplementation impl = builder.getDOMImplementation();
-        Document doc = impl.createDocument(null, CurriculumVitaeElement.CURRICULUM_VITAE.toString(), null);
-        appendWithPersonalInformation(doc, cv);
-        if(cv.getPersonalProfile() != null)
-            appendWithPersonalProfile(doc, cv);
-        if(cv.getWorkExperience() != null && !cv.getWorkExperience().isEmpty())
-            appendWithWorkExperience(doc, cv.getWorkExperience());
-        if(cv.getEducations() != null && !cv.getEducations().isEmpty())
-            appendWithEducations(doc, cv.getEducations());
-        if(cv.getAchievements() != null && !cv.getAchievements().isEmpty())
-            appendWithAchievements(doc, cv.getAchievements());
-        if(cv.getLanguages() != null && !cv.getLanguages().isEmpty())
-            appendWithLanguages(doc, cv.getLanguages());
-        if(cv.getSkills() != null && !cv.getSkills().isEmpty())
-            appendWithSkills(doc, cv.getSkills());
-        if(cv.getHobbies() != null && !cv.getHobbies().isEmpty())
-            appendWithHobbies(doc, cv.getHobbies());
-        return doc;
     }
 
     /**
