@@ -25,6 +25,7 @@ import org.xml.sax.SAXException;
 public class PDFgenerator {
     
     private XmlService xmlService;
+        
     
     public void XmlToLatex(String username)throws TransformerConfigurationException, TransformerException,
             ParserConfigurationException, IOException, SAXException
@@ -33,5 +34,11 @@ public class PDFgenerator {
         Transformer xsltProc = tf.newTransformer(new StreamSource(new File("XmlToLatex.xsl")));
         DOMSource source = new DOMSource(xmlService.createDocument(xmlService.loadFromXml(username)));
         xsltProc.transform(source, new StreamResult(new File("CV.tex")));    
+    }
+    
+    public void LatexToPdf() throws IOException
+    {
+        Runtime rt = Runtime.getRuntime();
+        rt.exec(new String[]{"pdflatex", "CV.tex", "--output-directory_"});
     }
 }
