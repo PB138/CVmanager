@@ -39,6 +39,6 @@ public class PDFgenerator {
     public void LatexToPdf() throws IOException
     {
         Runtime rt = Runtime.getRuntime();
-        rt.exec(new String[]{"pdflatex", "CV.tex", "--output-directory_"});
+        rt.exec(new String[]{"pdflatex", "cv.tex", "--output-directory="});
     }
 }
