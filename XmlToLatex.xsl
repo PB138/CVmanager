@@ -1,7 +1,7 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<xsl:stylesheet xmlns:xsl="http://www.w3.org/1999/XSL/Transform" version="1.0"
-                xmlns="http://www.w3.org/1999/xhtml">
-   
+<xsl:stylesheet version="1.0" xmlns:xsl="http://www.w3.org/1999/XSL/Transform">
+<xsl:output method="text" omit-xml-declaration="yes" encoding="UTF-8"/>
+
+<xsl:template match="/cv">
 
 %----------------------------------------------------------------------------------------
 %	PACKAGES AND OTHER DOCUMENT CONFIGURATIONS
@@ -15,8 +15,6 @@
 %	NAME AND CONTACT INFORMATION 
 %----------------------------------------------------------------------------------------
 
-<xsl:template match="/cv">
-
 \userinformation{
 
 \begin{flushright}
@@ -28,7 +26,7 @@ date of birth:
 <xsl:value-of select="personalInformation/birthday"/>
 
 <xsl:for-each select="personalInformation/contacts/contact">
-	<xsl:value-of select="@id">: <xsl:value-of select="."/>
+	<xsl:value-of select="@id"/>: <xsl:value-of select="."/>
 </xsl:for-each>
 
 \Sep % Some whitespace
@@ -144,4 +142,6 @@ date of birth:
 %-------------------------------------------------------
 
 \end{document}
-</xsl:stylesheet>
+</xsl:template>
+
+</xsl:stylesheet> 
