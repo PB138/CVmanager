@@ -10,6 +10,7 @@
   Date 11.5.16
   To change this template use File | Settings | File Templates.
 --%>
+
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -32,7 +33,7 @@
   <p>Can be used: .active, .success, .info, .warning, and .danger.</p>
   <table class="table table-striped">
     <thead>
-      <tr class="danger">
+      <tr class="info">
         <th>Basic information</th>
         <th> </th>
       </tr>
@@ -62,7 +63,7 @@
 
   <table class="table table-striped">
     <thead>
-      <tr class="danger">
+      <tr class="info">
         <th>Work skills</th>
         <th> </th>
       </tr>
@@ -71,23 +72,111 @@
 
 <c:forEach items="${cv.workExperience}" var="item">
       <tr>
-        <th>From: </th>
-        <td><c:out value="${item.from}"/></td>
+        <th><c:out value="${item.company}"/> - <c:out value="${item.position}"/></th>
+        <td><c:out value="${item.from}"/> - <c:out value="${item.to}"/></td>
       </tr>
       <tr>
-        <th>To:</th>
-        <td><c:out value="${item.to}"/></td>
+        <td><c:out value="${item.value}"/></td>
+      </tr>
+</c:forEach>
+
+</tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+      <tr class="info">
+        <th>Educations</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+<c:forEach items="${cv.educations}" var="item">
+      <tr>
+        <th><c:out value="${item.school}"/></th>
+        <td><c:out value="${item.from}"/> - <c:out value="${item.to}"/></td>
       </tr>
       <tr>
-        <th>Company:</th>
-        <td><c:out value="${item.company}"/></td>
+        <td>Description: <c:out value="${item.value}"/></td>
+      </tr>
+</c:forEach>
+
+</tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+      <tr class="info">
+        <th>Achievements</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+<c:forEach items="${cv.achievements}" var="item">
+      <tr>
+        <th><c:out value="${item.title}"/></th>
+        <td><c:out value="${item.year}"/></td>
       </tr>
       <tr>
-        <th>Position:</th>
-        <td><c:out value="${item.position}"/></td>
+        <td>Description: <c:out value="${item.value}"/></td>
       </tr>
+</c:forEach>
+
+</tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+      <tr class="info">
+        <th>Languages</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+<c:forEach items="${cv.languages}" var="item">
       <tr>
-        <th>Value:</th>
+        <th><c:out value="${item.lang}"/></th>
+        <td><c:out value="${item.level}"/></td>
+      </tr>
+</c:forEach>
+
+</tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+      <tr class="info">
+        <th>Skills</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+<c:forEach items="${cv.skills}" var="item">
+      <tr>
+        <th><c:out value="${item.title}"/></th>
+        <td><c:out value="${item.value}"/></td>
+      </tr>
+</c:forEach>
+
+</tbody>
+</table>
+
+<table class="table table-striped">
+    <thead>
+      <tr class="warning">
+        <th>Hobbies</th>
+        <th> </th>
+      </tr>
+    </thead>
+    <tbody>
+
+<c:forEach items="${cv.hobbies}" var="item">
+      <tr>
+        <th><c:out value="${item.title}"/></th>
         <td><c:out value="${item.value}"/></td>
       </tr>
 </c:forEach>
@@ -98,13 +187,6 @@
 </div>
 
 
-workExperience${cv.workExperience}</br>
-
-educations${cv.educations}</br>
-achievements${cv.achievements}</br>
-languages${cv.languages}</br>
-skills${cv.skills}</br>
-hobbies${cv.hobbies}</br>
 
 </body>
 </html>
