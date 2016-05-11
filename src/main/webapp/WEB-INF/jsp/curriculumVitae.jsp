@@ -32,13 +32,13 @@
   <p>Can be used: .active, .success, .info, .warning, and .danger.</p>
   <table class="table table-striped">
     <thead>
-      <tr>
-        <th>Z·kladnÈ inform·cie</th>
+      <tr class="danger">
+        <th>Basic information</th>
         <th> </th>
       </tr>
     </thead>
     <tbody>
-      <tr class="active">
+      <tr>
         <th>Full name:</th>
         <td>${cv.fullName}</td>
       </tr>
@@ -62,14 +62,14 @@
 
   <table class="table table-striped">
     <thead>
-      <tr>
-        <th>Pracovn· sk˙senosù</th>
+      <tr class="danger">
+        <th>Work skills</th>
         <th> </th>
       </tr>
     </thead>
     <tbody>
 
-      <c:forEach items="${cv.workExperience}" var="item">
+<c:forEach items="${cv.workExperience}" var="item">
       <tr>
         <th>From: </th>
         <td><c:out value="${item.from}"/></td>
