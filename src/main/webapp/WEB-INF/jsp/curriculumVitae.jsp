@@ -31,32 +31,32 @@
 <div class="container">
   <h2>Curriculum vitae</h2>
   <p>Can be used: .active, .success, .info, .warning, and .danger.</p>
-  <table class="table table-striped">
+  <table class="table table-striped col-lg-12">
     <thead>
       <tr class="info">
-        <th>Basic information</th>
-        <th> </th>
+        <th class="col-lg-12" colspan="2">Basic information</th>
       </tr>
     </thead>
     <tbody>
-      <tr>
-        <th>Full name:</th>
-        <td>${cv.fullName}</td>
+      <tr class="">
+        <th class="col-lg-5">Full name:</th>
+        <td class="col-lg-7">${cv.fullName}</td>
+      </tr>
+
+      <tr class="">
+        <th class="col-lg-5">Address:</th>
+        <td class="col-lg-7">${cv.address}</td>
       </tr>
 
       <tr>
-        <th>Address:</th>
-        <td>${cv.address}</td>
+      <tr class="">
+      <th class="col-lg-5">Birthday:</th>
+      <td class="col-lg-7">${cv.birthday}</td>
       </tr>
 
-      <tr>
-        <th>Birthday:</th>
-        <td>${cv.birthday}</td>
-      </tr>
-
-      <tr>
-        <th>Info:</th>
-        <td>${cv.personalProfile}</td>
+      <tr class="">
+        <th class="col-lg-5">Info:</th>
+        <td class="col-lg-5">${cv.personalProfile}</td>
       </tr>
     </tbody>
   </table>
@@ -71,12 +71,12 @@
     <tbody>
 
 <c:forEach items="${cv.workExperience}" var="item">
-      <tr>
-        <th><c:out value="${item.company}"/> - <c:out value="${item.position}"/></th>
-        <td><c:out value="${item.from}"/> - <c:out value="${item.to}"/></td>
+      <tr class="">
+        <th class="col-lg-5"><c:out value="${item.company}"/> - <c:out value="${item.position}"/></th>
+        <td class="col-lg-7"><c:out value="${item.from}"/> - <c:out value="${item.to}"/></td>
       </tr>
-      <tr>
-        <td><c:out value="${item.value}"/></td>
+      <tr class="">
+        <td class="col-lg-5"><c:out value="${item.value}"/></td>
       </tr>
 </c:forEach>
 
@@ -95,7 +95,7 @@
 <c:forEach items="${cv.educations}" var="item">
       <tr>
         <th><c:out value="${item.school}"/></th>
-        <td><c:out value="${item.from}"/> - <c:out value="${item.to}"/></td>
+        <td class="col-lg-7"><c:out value="${item.from}"/> - <c:out value="${item.to}"/></td>
       </tr>
       <tr>
         <td>Description: <c:out value="${item.value}"/></td>
@@ -116,8 +116,8 @@
 
 <c:forEach items="${cv.achievements}" var="item">
       <tr>
-        <th><c:out value="${item.title}"/></th>
-        <td><c:out value="${item.year}"/></td>
+        <th class="col-lg-5"><c:out value="${item.title}"/></th>
+        <td class="col-lg-7"><c:out value="${item.year}"/></td>
       </tr>
       <tr>
         <td>Description: <c:out value="${item.value}"/></td>
@@ -139,7 +139,7 @@
 <c:forEach items="${cv.languages}" var="item">
       <tr>
         <th><c:out value="${item.lang}"/></th>
-        <td><c:out value="${item.level}"/></td>
+        <td class="col-lg-7"><c:out value="${item.level}"/></td>
       </tr>
 </c:forEach>
 
@@ -158,7 +158,7 @@
 <c:forEach items="${cv.skills}" var="item">
       <tr>
         <th><c:out value="${item.title}"/></th>
-        <td><c:out value="${item.value}"/></td>
+        <td class="col-lg-7"><c:out value="${item.value}"/></td>
       </tr>
 </c:forEach>
 
@@ -177,7 +177,7 @@
 <c:forEach items="${cv.hobbies}" var="item">
       <tr>
         <th><c:out value="${item.title}"/></th>
-        <td><c:out value="${item.value}"/></td>
+        <td class="col-lg-7"><c:out value="${item.value}"/></td>
       </tr>
 </c:forEach>
 
@@ -185,7 +185,6 @@
 </table>
 
 </div>
-
 
 </body>
 </html>
