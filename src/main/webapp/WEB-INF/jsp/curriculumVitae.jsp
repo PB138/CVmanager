@@ -55,7 +55,7 @@
       </tr>
 
       <tr>
-        <th>personalProfile:</th>
+        <th>Info:</th>
         <td>${cv.personalProfile}</td>
       </tr>
     </tbody>
@@ -185,7 +185,6 @@
 </table>
 
 </div>
-
 
 
 </body>
