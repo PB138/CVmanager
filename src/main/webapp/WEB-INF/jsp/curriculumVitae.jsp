@@ -1,5 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-
 <%--
   Created by IntelliJ IDEA.
   User: nfabian
@@ -12,12 +10,17 @@
 --%>
 
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <html>
 <head>
     <title>Curriculum vitae</title>
 </head>
 <body>
-
+<tr class="right">
+Language : <a href="?lang=en">English</a>|<a href="?lang=sk">Slovak</a><br/>
+</tr>
 <head>
   <title>Bootstrap Example</title>
   <meta charset="utf-8">
@@ -39,23 +42,24 @@
     </thead>
     <tbody>
       <tr class="">
-        <th class="col-lg-5">Full name:</th>
+        <th class="col-lg-5"><spring:message code="cv.fullName" /></th>
+
         <td class="col-lg-7">${cv.fullName}</td>
       </tr>
 
       <tr class="">
-        <th class="col-lg-5">Address:</th>
+        <th class="col-lg-5"><spring:message code="cv.address" /></th>
         <td class="col-lg-7">${cv.address}</td>
       </tr>
 
       <tr>
       <tr class="">
-      <th class="col-lg-5">Birthday:</th>
+      <th class="col-lg-5"><spring:message code="cv.birthday" /></th>
       <td class="col-lg-7">${cv.birthday}</td>
       </tr>
 
       <tr class="">
-        <th class="col-lg-5">Info:</th>
+        <th class="col-lg-5"><spring:message code="cv.personalInformation" /></th>
         <td class="col-lg-5">${cv.personalProfile}</td>
       </tr>
     </tbody>
@@ -64,7 +68,7 @@
   <table class="table table-striped">
     <thead>
       <tr class="info">
-        <th>Work skills</th>
+        <th><spring:message code="cv.workExperience" /></th>
         <th> </th>
       </tr>
     </thead>
@@ -86,7 +90,7 @@
 <table class="table table-striped">
     <thead>
       <tr class="info">
-        <th>Educations</th>
+        <th><spring:message code="cv.educations" />/th>
         <th> </th>
       </tr>
     </thead>
@@ -108,7 +112,7 @@
 <table class="table table-striped">
     <thead>
       <tr class="info">
-        <th>Achievements</th>
+        <th><spring:message code="cv.achievements" /></th>
         <th> </th>
       </tr>
     </thead>
@@ -130,7 +134,7 @@
 <table class="table table-striped">
     <thead>
       <tr class="info">
-        <th>Languages</th>
+        <th><spring:message code="cv.languages" /></th>
         <th> </th>
       </tr>
     </thead>
@@ -149,7 +153,7 @@
 <table class="table table-striped">
     <thead>
       <tr class="info">
-        <th>Skills</th>
+        <th><spring:message code="cv.skills" /></th>
         <th> </th>
       </tr>
     </thead>
@@ -168,7 +172,7 @@
 <table class="table table-striped">
     <thead>
       <tr class="warning">
-        <th>Hobbies</th>
+        <th><spring:message code="cv.hobbies" /></th>
         <th> </th>
       </tr>
     </thead>
