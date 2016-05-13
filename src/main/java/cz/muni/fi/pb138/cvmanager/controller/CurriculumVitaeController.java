@@ -42,13 +42,14 @@ public class CurriculumVitaeController {
     }
 
     @RequestMapping(value = "/auth/update", method = RequestMethod.POST)
-    public String update(@ModelAttribute("CurriculumVitae") CurriculumVitae cv) {
+    public ModelAndView update(@ModelAttribute("CurriculumVitae") CurriculumVitae cv) {
         ModelAndView model = new ModelAndView();
 
         // *************************** Uncomment when authentication is done ************************************
-        //xmlService.serializeToXml(xmlService.loadFromXml(getPrincipalUsername()), cv);
-
-        return "redirect:/auth";
+        //xmlService.serializeToXml(getPrincipalUsername(), cv);
+        model.addObject("cv", cv);
+        model.setViewName("curriculumVitae");
+        return model;
     }
 
     // *************************** Uncomment when authentication is done ************************************
