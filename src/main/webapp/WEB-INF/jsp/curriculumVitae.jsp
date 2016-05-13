@@ -190,5 +190,15 @@ Language : <a href="?lang=en">English</a>|<a href="?lang=sk">Slovak</a><br/>
 
 </div>
 
+</br>
+<q><a href="<c:url value='/auth/update' />" >UPDATE</a></q>
+<style>
+q {
+    border: 3px solid grey;
+    padding: 10px;
+    margin: 100px;
+}
+</style>
+
 </body>
 </html>
