@@ -7,10 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.xml.sax.SAXException;
-
-import javax.xml.parsers.ParserConfigurationException;
-import java.io.IOException;
 
 /**
  * Created by nfabian on 2.5.16.
@@ -28,15 +24,8 @@ public class CurriculumVitaeController {
 
         // *************************** Uncomment when authentication is done ************************************
         //model.addObject("cv", xmlService.loadFromXml(getPrincipalUsername()));
-        try {
-            model.addObject("cv", xmlService.loadFromXml("username"));
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
+
+        //model.addObject("cv", xmlService.loadFromXml("username"));
         model.setViewName("curriculumVitae");
         return model;
     }

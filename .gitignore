@@ -45,6 +45,7 @@ fabric.properties
 
 .idea
 target
+*.iml
 
 
 # FOR NETBEANS

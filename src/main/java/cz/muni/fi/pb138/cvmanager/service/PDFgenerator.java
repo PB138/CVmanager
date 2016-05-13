@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package cz.muni.fi.pb138.cvmanager.PDFgenerator;
+package cz.muni.fi.pb138.cvmanager.service;
 
 import java.io.File;
 import javax.xml.transform.Transformer;
@@ -17,13 +17,18 @@ import java.io.IOException;
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.dom.DOMSource;
 import org.xml.sax.SAXException;
+import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired;
+
 
 /**
  *
  * @author david
- */
+ */ 
+@Service
 public class PDFgenerator {
     
+    @Autowired
     private XmlService xmlService;
         
     
