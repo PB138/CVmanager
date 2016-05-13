@@ -21,21 +21,61 @@
     <section class="main-content">
 
         <h1>Curriculum Vitae Manager</h1>
-        <h3>Description</h3>
+        <h3>Used technologies</h3>
         <p>
             The project is developed in JAVA. It provides users with possibility to create his profile make a CV, save it into XML which is stored in database. Further it is possible to translate parts of CV into English, transform it into LaTex and generate PDF file from it.
         </p>
 
         <h3>Used technologies</h3>
         <p>
-            <ul>
-                <li>Java</li>
-                <li>Maven</li>
-                <li>Spring Framework</li>
-                <li>Bootstrap</li>
-                <li>XSLT</li>
-                <li>DOM</li>
-            </ul>
+        <h4>Java</h4>
+        <p>
+            Backend of the application is programmed using Java programming language.
+        </p>
+
+        <h4>Maven</h4>
+        <p>
+            Dependencies are managed using the Maven Building tool. Tomcat plugin is used for deploying.
+        </p>
+
+        <h4>Spring Framework</h4>
+        <p>
+            Dependency Injection is managed using Spring Framework. Login services are provided by Spring Security.
+            Controllers are implemented using Spring MVC.
+        </p>
+
+        <h4>JSP</h4>
+        <p>
+            The frontend of the application is created using JSP.
+        </p>
+
+        <h4>Bootstrap</h4>
+
+        <h4>XSLT</h4>
+        <p>
+            Transformations from XML to LaTeX are provided by the XSLT scripts.
+        </p>
+
+        <h4>DOM</h4>
+        <p>
+            XML files are processed in Java as Document Object Model.
+        </p>
+
+        <h4>PostgreSQL</h4>
+        <p>
+            User login data are stored in PostgreSQL.
+        </p>
+
+        <h3>Backend description</h3>
+        <p>
+            User can register to the application and their login data are save in PostgreSQL. User authentication is
+            provided by Spring Security. After log in the application user can create his curriculum vitae by filling
+            the create CV form. Data from the form are persisted in XML files by user's name. Afterwards the user can
+            edit his CV anytime. XML changes are managed as DOM. The user has the possibility to download his CV as pdf.
+            Before download, the XML file is transformed to a LaTeX document with special template and the pdf document
+            is generated. Pdf document is then send to the user as stream of bites. The frontend of the application
+            is implemented using JSP. The frontend provides for the user the possibility to switch between many
+            languages of the main elements of his CV.
         </p>
         
         <h3>Use Case Diagram</h3>
