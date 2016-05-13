@@ -26,7 +26,7 @@
 		<p>
 			This web application provides users with possibility to easily create their own nice structured CV. <br/>
 			The application allows to create user profile, due to it the user can manage his information for the CV. He can fill, remove or change these information any time he wants.
-			Further it is possible to download the CV either in English or Slovakian translation of static parts (headlines, subheadlines and so on) as a PDF file.
+			Further it is possible to download the CV either in English or Slovak translation of static parts (headlines, subheadlines and so on) as a PDF file.
         </p>
 
         <h3>Used technologies</h3>
@@ -113,15 +113,35 @@
             </tr>
         </table>
 
+		<table>
+            <tr>
+                <td width="33%">
+                    <img src="img/logo/latex.png" width="100">
+                </td>
+                <td width="33%">
+                    <img src="img/logo/xml.png" width="100">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                   	LaTex is used to transform XML stored CV into PDF document
+                </td>
+                <td>
+                    XML is used to store users' CVs 
+                </td>
+            </tr>
+        </table>
+
         <h3>Backend description</h3>
         <p>
             User can register to the application and their login data are save in PostgreSQL. User authentication is
             provided by Spring Security. After log in the application user can create his curriculum vitae by filling
             the create CV form. Data from the form are persisted in XML files by user's name. Afterwards the user can
-            edit his CV anytime. XML changes are managed as DOM. The user has the possibility to download his CV as pdf.
-            Before download, the XML file is transformed to a LaTeX document with special template and the pdf document
-            is generated. Pdf document is then send to the user as stream of bites. The frontend of the application
-            is implemented using JSP. The frontend provides for the user the possibility to switch between many
+            edit his CV anytime. XML changes are managed as DOM. The user has the possibility to download his CV as PDF document.
+            Before download, the XML file is transformed to a LaTex document with special template and the pdf document
+            is generated, this is done thanks to XSLT technology which also translates static phrases as headlines and so on into English or Slovak.
+			PDF document is genarated from Tex Document by calling of external LaTex compiler and the document is then send to the user as stream of bytes.
+			The frontend of the application is implemented using JSP. The frontend provides for the user the possibility to switch between many
             languages of the main elements of his CV.
         </p>
         
@@ -131,7 +151,10 @@
         </p>
 
         <h3>
-        <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Authors and Contributors</h3>
+		    <a id="authors-and-contributors" class="anchor" href="#authors-and-contributors" aria-hidden="true">
+			<span aria-hidden="true" class="octicon octicon-link"></span>
+			</a>Authors and Contributors
+		</h3>
 
         <p>
         <a href="https://github.com/norbertfabian" class="user-mention">@NorbertFabian</a><br/>
@@ -150,6 +173,7 @@
             <li>Create XSLT script (from XML to LaTeX)</li>
             <li>Implement service for using the XSLT script</li>
             <li>Implement download as PDF</li>
+			<li>Implement translation of static phrases in XSLT</li>
         </ul>
         <a href="https://github.com/Simonezo" class="user-mention">@SimonPavlik</a><br/>
         <ul>
