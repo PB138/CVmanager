@@ -187,8 +187,10 @@ Language : <a href="?lang=en">English</a>|<a href="?lang=sk">Slovak</a><br/>
 
 </tbody>
 </table>
-
-</div>
+    <div align="right">
+            <a href="<c:url value='/auth/update' />" >
+                <button type="button" class="btn btn-primary active">Edit</button></a>
+    </div>
 
 </body>
 </html>
