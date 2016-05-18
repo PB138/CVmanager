@@ -1,10 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans
-       http://www.springframework.org/schema/beans/spring-beans-4.1.xsd"
+       xmlns:jpa="http://www.springframework.org/schema/data/jpa"
+       xsi:schemaLocation="
+                http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+                http://www.springframework.org/schema/data/jpa http://www.springframework.org/schema/data/jpa/spring-jpa-1.0.xsd">
 
->
+    <jpa:repositories base-package="cz.muni.fi.pb138.cvmanager.dao" />
+
     <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
         <property name="entityManagerFactory" ref="entityManagerFactory" />
     </bean>
@@ -12,9 +15,9 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.postgresql.Driver" />
-        <property name="url" value="jdbc:postgresql://localhost:5432/users" />
+        <property name="url" value="jdbc:postgresql://localhost:5432/cvmanager" />
         <property name="username" value="postgres" />
-        <property name="password" value="postgressql" />
+        <property name="password" value="postgres" />
     </bean>
 
     <bean id="entityManagerFactory"
@@ -26,7 +29,7 @@
         </property>
         <property name="jpaProperties">
             <props>
-                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQLDialect</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL9Dialect</prop>
                 <prop key="hibernate.show_sql">false</prop>
                 <prop key="hibernate.format_sql">false</prop>
 
@@ -40,14 +43,4 @@
             </props>
         </property>
     </bean>
-
-
-
-
-
-
-
-
-
-
 </beans>

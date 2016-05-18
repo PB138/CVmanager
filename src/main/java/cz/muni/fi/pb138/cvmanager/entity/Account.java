@@ -9,7 +9,7 @@ import javax.persistence.Id;
  * Created by zeman on 17-May-16.
  */
 @Entity
-public class User {
+public class Account {
 
     @Id
     @Column(nullable=false)
@@ -45,9 +45,9 @@ public class User {
         this.password = password;
     }
 
-    public User() {
+    public Account() {
     }
-    public User(String username, String password) {
+    public Account(String username, String password) {
         this.username = username;
         this.password = password;
     }

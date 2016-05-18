@@ -1,7 +1,7 @@
 package cz.muni.fi.pb138.cvmanager.service;
 
-import cz.muni.fi.pb138.cvmanager.dao.UserDao;
-import cz.muni.fi.pb138.cvmanager.entity.User;
+import cz.muni.fi.pb138.cvmanager.dao.AccountDao;
+import cz.muni.fi.pb138.cvmanager.entity.Account;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,26 +15,26 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserService {
 
     @Autowired
-    private UserDao userDao;
+    private AccountDao accountDao;
 
-//    public User loadUserByUsername(String username) {
+//    public Account loadUserByUsername(String username) {
 //
 //        return userDao.getUser(username);
 //    }
 
 
     public void login(String username){
-//        User user = userDao.findOne(username);
-//        if (user != null) {
-////            userDao.save(user);
+//        Account account = userDao.findOne(username);
+//        if (account != null) {
+////            userDao.save(account);
 
 //        }
 }
-    public User findOne(String username){
-        return userDao.getUser(username);
+    public Account findOne(String username){
+        return accountDao.findOne(username);
     }
 
-    public void register(User user) {
-        userDao.register(user);
+    public void register(Account account) {
+        accountDao.save(account);
     }
 }

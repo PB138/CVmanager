@@ -1,6 +1,6 @@
 package cz.muni.fi.pb138.cvmanager.controller;
 
-import cz.muni.fi.pb138.cvmanager.entity.User;
+import cz.muni.fi.pb138.cvmanager.entity.Account;
 import cz.muni.fi.pb138.cvmanager.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -40,7 +40,7 @@ public class LoginController {
 
 
     @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPost(@ModelAttribute("user") User user) {
+    public String loginPost(@ModelAttribute("account") Account account) {
         //model.addAttribute("current", "login");
         //userService.login(user.getUsername());
 
@@ -73,16 +73,16 @@ public class LoginController {
 //        return model;
 //    }
 
-    @ModelAttribute("user")
-    public User construct(){
-        return new User();
+    @ModelAttribute("Account")
+    public Account construct(){
+        return new Account();
     }
 
 
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
-    public String registerPost(@ModelAttribute("user") User user){
+    public String registerPost(@ModelAttribute("user") Account account){
 
-        userService.register(user);
+        userService.register(account);
         return "register";
     }
 }
