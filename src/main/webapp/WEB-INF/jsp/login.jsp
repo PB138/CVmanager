@@ -1,4 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html>
 <head>
     <title>Custom Login Page</title>
@@ -6,18 +7,22 @@
 <body onload='document.loginForm.username.focus();'>
 
     <h3>Login</h3>
-    <form name='loginForm' action="<c:url value='j_spring_security_check' />" method='POST'>
-          method='POST'>
+    <form:form commandName="user"  name='loginForm' action="<c:url value='/j_spring_security_check' />" method='POST'>
+
 
         <table>
             <tr>
                 <td>User:</td>
-                <td><input type='text' name='username' value=''>
+                <td>
+                    <form:input path="username"  />
+                    <form:errors path="username" />
                 </td>
             </tr>
             <tr>
                 <td>Password:</td>
-                <td><input type='password' name='password' />
+                <td>
+                    <form:password path="password"  />
+                    <form:errors path="password" />
                 </td>
             </tr>
             <tr>
@@ -27,6 +32,6 @@
             </tr>
         </table>
 
-    </form>
+    </form:form>
 </body>
 </html>
