@@ -1,15 +1,18 @@
 package cz.muni.fi.pb138.cvmanager.controller;
 
 import cz.muni.fi.pb138.cvmanager.entity.Account;
-import cz.muni.fi.pb138.cvmanager.service.UserService;
+import cz.muni.fi.pb138.cvmanager.service.AccountService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,19 +20,37 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
-
-
  @Autowired
- private UserService userService;
+ private AccountService accountService;
 
 
-    @RequestMapping("/login")
-    public String login() {
-        //model.addAttribute("current", "login");
 
-
-        return "login";
+    @RequestMapping(value = "/users",method = RequestMethod.GET)
+    public String allUsers(Model model){
+        model.addAttribute("users",accountService.findAll());
+        return "users";
     }
+
+
+
+    @RequestMapping(value={"/login" }, method = RequestMethod.GET)
+    public ModelAndView login(@RequestParam(value = "error", required = false) String error,
+                              @RequestParam(value = "logout", required = false) String logout) {
+        ModelAndView model = new ModelAndView();
+        if (error != null) {
+            model.addObject("error", "Invalid username or password!");
+
+        }
+        if (logout != null) {
+            model.addObject("logout", "You have been logged out successfully");
+        }
+
+        model.setViewName("login");
+        return model;
+    }
+
+
+
 
 
     @RequestMapping(value = "/register" , method = RequestMethod.GET)
@@ -38,24 +59,8 @@ public class LoginController {
     }
 
 
+    
 
-    @RequestMapping(value = "/login", method = RequestMethod.POST)
-    public String loginPost(@ModelAttribute("account") Account account) {
-        //model.addAttribute("current", "login");
-        //userService.login(user.getUsername());
-
-
-        return "login";
-    }
-
-
-//    @RequestMapping(value = {"/", "/login"}, method = RequestMethod.GET)
-//    public ModelAndView login() {
-//        ModelAndView model = new ModelAndView();
-//        model.setViewName("login");
-//        return model;
-//
-//    }
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -65,13 +70,6 @@ public class LoginController {
         return "redirect:/login?logout";
     }
 
-//    @RequestMapping(value = {"/","/login"},method = RequestMethod.POST)
-//    public ModelAndView loginPOST(HttpSession session, @ModelAttribute("user") User user){
-//        ModelAndView model = new ModelAndView();
-//        UserDao userDao = new UserDaoImpl();
-//        if(userDao.getUser(user.getUsername()))
-//        return model;
-//    }
 
     @ModelAttribute("Account")
     public Account construct(){
@@ -80,9 +78,14 @@ public class LoginController {
 
 
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
-    public String registerPost(@ModelAttribute("user") Account account){
+    public String registerPost(@ModelAttribute("account") Account account){
 
-        userService.register(account);
-        return "register";
+        account.setRole("ROLE_USER");
+        account.setEnabled(true);
+        account.setSalt("Keepo");
+        System.out.println("account creation");
+        accountService.register(account);
+        System.out.println("account created");
+        return "login";
     }
 }

@@ -10,14 +10,11 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Register</title>
+    <title>Sign up</title>
 </head>
 <body>
 
-<form:form commandName="user">
-    <c:if test="${param.success eq true}">
-        <div class="alert alert-success">Registration successfull!</div>
-    </c:if>
+<form:form commandName="Account">
 
     <div >
         <label for="username" >Username:</label>

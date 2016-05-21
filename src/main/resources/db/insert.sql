@@ -1,1 +1,1 @@
-INSERT INTO account(username, password, salt)VALUES ( 'Kappa', 'Kappa','Pride');
+INSERT INTO account(username, password, salt, roles, enabled)VALUES ( "admin", "admin","salt","ROLE_USER",TRUE );

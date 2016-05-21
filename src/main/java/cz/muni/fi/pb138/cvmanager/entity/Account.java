@@ -18,6 +18,16 @@ public class Account {
     @Column(nullable=false)
     private String password;
 
+    @Column(nullable=false)
+    private String salt;
+
+    @Column(nullable=false, length=64)
+    private String role;
+
+    @Column(nullable=false)
+    private boolean enabled;
+
+
     public String getSalt() {
         return salt;
     }
@@ -26,8 +36,7 @@ public class Account {
         this.salt = salt;
     }
 
-    @Column(nullable=false)
-    private String salt;
+
 
     public String getUsername() {
         return username;
@@ -47,8 +56,32 @@ public class Account {
 
     public Account() {
     }
+    public Account(String username, String password, String role) {
+        this(username,password,role,true);
+    }
     public Account(String username, String password) {
+        this(username,password,"ROLE_USER",true);
+    }
+    public Account(String username, String password, String role, boolean enabled) {
         this.username = username;
         this.password = password;
+        this.role = role;
+        this.enabled=true;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

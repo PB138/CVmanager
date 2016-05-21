@@ -18,7 +18,7 @@ public class CurriculumVitaeController {
     @Autowired
     private XmlService xmlService;
 
-    @RequestMapping(value = "/auth", method = RequestMethod.GET)
+    @RequestMapping(value = {"/auth","/"}, method = RequestMethod.GET)
     public ModelAndView load() {
         ModelAndView model = new ModelAndView();
 
