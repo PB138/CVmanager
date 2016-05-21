@@ -11,6 +11,9 @@
 
     <h2>Login</h2>
 
+    <c:if test="${not empty success}" >
+        <div> ${success}</div>
+    </c:if>
     <c:if test="${not empty error}">
         ${error}
     </c:if>

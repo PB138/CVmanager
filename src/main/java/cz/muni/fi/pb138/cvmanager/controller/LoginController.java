@@ -69,10 +69,18 @@ public class LoginController {
 
 
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
-    public String registerPost(@ModelAttribute("account") Account account){
+    public ModelAndView registerPost(@ModelAttribute("account") Account account){
 
-        accountService.register(account);
-        System.out.println("account created");
-        return "login";
+        ModelAndView model = new ModelAndView();
+        if(account.getPassword().equals(account.getRetypePassword())) {
+            accountService.register(account);
+            model.addObject("success","Account created successfully!");
+            model.setViewName("login");
+
+            return model;
+        }
+        model.addObject("error","Passwords don't match!");
+        model.setViewName("register");
+        return  model;
     }
 }

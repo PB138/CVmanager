@@ -33,6 +33,7 @@ public class AccountService {
     public void register(Account account) {
 
         account.setPassword(passwordEncoder.encode(account.getPassword()));
+        if(!account.getPassword().equals(account))
         account.setRole("ROLE_ADMIN");
         account.setEnabled(true);
         account.setSalt("Keepo");

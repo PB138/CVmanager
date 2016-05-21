@@ -4,6 +4,7 @@ package cz.muni.fi.pb138.cvmanager.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  * Created by zeman on 17-May-16.
@@ -26,6 +27,10 @@ public class Account {
 
     @Column(nullable=false)
     private boolean enabled;
+
+
+    @Transient
+    private String retypePassword;
 
 
     public String getSalt() {
@@ -83,5 +88,13 @@ public class Account {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getRetypePassword() {
+        return retypePassword;
+    }
+
+    public void setRetypePassword(String retypePassword) {
+        this.retypePassword = retypePassword;
     }
 }

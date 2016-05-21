@@ -13,36 +13,41 @@
     <title>Sign up</title>
 </head>
 <body>
+    <h2>Registration</h2>
+    <c:if test="${not empty error}">
+        ${error}
+    </c:if>
+    <form:form commandName="Account">
 
-<form:form commandName="Account">
+        <div >
+            <label for="username" >Username:</label>
+            <div >
+                <form:input path="username"  />
+                <form:errors path="username" />
+            </div>
+        </div>
+        <div >
+            <label for="password" >Password:</label>
+            <div >
+                <form:password path="password"  />
+                <form:errors path="password" />
+            </div>
+        </div>
+        <div >
+            <label for="password" >Password again:</label>
+            <div >
+                <form:password path="retypePassword"  />
+                <form:errors path="retypePassword" />
 
-    <div >
-        <label for="username" >Username:</label>
-        <div >
-            <form:input path="username"  />
-            <form:errors path="username" />
+            </div>
         </div>
-    </div>
-    <div >
-        <label for="password" >Password:</label>
         <div >
-            <form:password path="password"  />
-            <form:errors path="password" />
+            <div >
+                <input type="submit" value="Register" />
+            </div>
         </div>
-    </div>
-    <div >
-        <label for="password" >Password again:</label>
-        <div >
-            <input type="password" name="password_again" id="password_again"  />
-        </div>
-    </div>
-    <div >
-        <div >
-            <input type="submit" value="Register" />
-        </div>
-    </div>
 
-</form:form>
+    </form:form>
 
 </body>
 </html>
