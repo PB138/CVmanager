@@ -1,16 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans:beans xmlns="http://www.springframework.org/schema/security"
-             xmlns:beans="http://www.springframework.org/schema/beans"
-             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
              xsi:schemaLocation="http://www.springframework.org/schema/beans
-		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
-		http://www.springframework.org/schema/security
-		http://www.springframework.org/schema/security/spring-security.xsd">
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security.xsd">
 
     <http auto-config="true" >
 
-        <intercept-url pattern="/" access="hasRole('ROLE_USER')" />
-        <intercept-url pattern="/auth" access="hasRole('ROLE_USER')" />
+        <intercept-url pattern="/" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
+        <intercept-url pattern="/auth" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
 
         <logout logout-url="/j_spring_security_logout" />
 
@@ -37,7 +36,7 @@
             <!--<user-service>-->
                 <!--<user name="a" password="a" authorities="ROLE_USER"/>-->
             <!--</user-service>-->
-            <!--<password-encoder hash="sha"/>-->
+            <password-encoder ref="bcryptEncoder"/>
 
 
 
@@ -45,8 +44,10 @@
                     authorities-by-username-query="select username, role from account where username = ?"
                     users-by-username-query="select username,password,TRUE from account where username = ?"
                     />
-
-
         </authentication-provider>
     </authentication-manager>
+
+    <beans:bean id="bcryptEncoder" class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" />
+
+    <!--<beans:bean id="customUserDetailsService" class="com.websystique.springsecurity.service.CustomUserDetailsService" />-->
 </beans:beans>

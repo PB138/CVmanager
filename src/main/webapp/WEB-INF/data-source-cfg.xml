@@ -49,4 +49,9 @@
 
 
 
+    <!--<bean id="authProvider" class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">-->
+        <!--<property name="dataSource" ref="dataSource" />-->
+        <!--<property name="passwordEncoder" ref="encoder" />-->
+    <!--</bean>-->
+
 </beans>

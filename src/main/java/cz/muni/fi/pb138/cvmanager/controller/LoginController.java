@@ -31,8 +31,6 @@ public class LoginController {
         return "users";
     }
 
-
-
     @RequestMapping(value={"/login" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout) {
@@ -49,17 +47,10 @@ public class LoginController {
         return model;
     }
 
-
-
-
-
     @RequestMapping(value = "/register" , method = RequestMethod.GET)
     public String register(){
         return "register";
     }
-
-
-    
 
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
@@ -80,10 +71,6 @@ public class LoginController {
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
     public String registerPost(@ModelAttribute("account") Account account){
 
-        account.setRole("ROLE_USER");
-        account.setEnabled(true);
-        account.setSalt("Keepo");
-        System.out.println("account creation");
         accountService.register(account);
         System.out.println("account created");
         return "login";
