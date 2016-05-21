@@ -72,15 +72,25 @@ public class LoginController {
     public ModelAndView registerPost(@ModelAttribute("account") Account account){
 
         ModelAndView model = new ModelAndView();
-        if(account.getPassword().equals(account.getRetypePassword())) {
+        if(!account.getPassword().equals(account.getRetypePassword())) {
+            model.addObject("error","Passwords don't match!");
+            model.setViewName("register");
+            return  model;
+
+        }else if(accountService.findOne(account.getUsername())!=null){
+            model.addObject("error","Account with this name already exist!");
+            model.setViewName("register");
+            return  model;
+
+        }
+        else {
             accountService.register(account);
             model.addObject("success","Account created successfully!");
             model.setViewName("login");
-
             return model;
         }
-        model.addObject("error","Passwords don't match!");
-        model.setViewName("register");
-        return  model;
+
+
+
     }
 }
