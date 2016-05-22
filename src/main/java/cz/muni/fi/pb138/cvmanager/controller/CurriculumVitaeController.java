@@ -13,7 +13,7 @@ import org.springframework.web.servlet.ModelAndView;
  */
 
 @Controller
-public class CurriculumVitaeController {
+public class CurriculumVitaeController extends BaseController {
 
     @Autowired
     private XmlService xmlService;
@@ -52,12 +52,4 @@ public class CurriculumVitaeController {
         return model;
     }
 
-    // *************************** Uncomment when authentication is done ************************************
-//    private String getPrincipalUsername() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null) {
-//            UserDetails userDetails = (UserDetails) auth.getPrincipal();
-//        }
-//        return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
-//    }
 }
