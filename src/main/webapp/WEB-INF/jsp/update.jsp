@@ -9,8 +9,49 @@
 <html>
 <head>
     <title>Update</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 <body>
-This will be the update page
+
+Language:
+<div class="btn-group dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="lang-sm lang-lbl-full" lang="it"></span> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="?lang=en">English</a></li>
+    <li><a href="?lang=sk">Slovak</li>
+  </ul>
+</div>
+
+<style>
+    div{
+        padding: 0px 30px 0px 0px;
+        }
+</style>
+
+<div align="right">
+    <a href="<c:url value='/auth/logout' />" >
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out</button></a>
+</div>
+
+
+<div class="container">
+<style>
+    h2{
+        background-image: url("http://bodywrapsstlouis.com/wp-content/uploads/2013/03/header-background-image.jpg");
+        color: white;
+        background-color: #3f3f5a;
+        padding: 30px 30px 30px 30px;
+        }
+</style>
+
+  <h2>Update</h2>
+
 </body>
 </html>

@@ -24,9 +24,18 @@
 
 </head>
 <body>
-<tr class="right">
-Language : <a href="?lang=en">English</a>|<a href="?lang=sk">Slovak</a><br/>
-</tr>
+
+Language:
+<div class="btn-group dropdown">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    <span class="lang-sm lang-lbl-full" lang="it"></span> <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="?lang=en">English</a></li>
+    <li><a href="?lang=sk">Slovak</li>
+  </ul>
+</div>
+
 
 <style>
     div{
