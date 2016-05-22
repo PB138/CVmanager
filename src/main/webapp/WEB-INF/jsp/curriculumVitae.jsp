@@ -16,24 +16,40 @@
 <html>
 <head>
     <title>Curriculum vitae</title>
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
+      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
 </head>
 <body>
 <tr class="right">
 Language : <a href="?lang=en">English</a>|<a href="?lang=sk">Slovak</a><br/>
 </tr>
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-</head>
-<body>
+
+<style>
+    div{
+        padding: 0px 30px 0px 0px;
+        }
+</style>
+
+<div align="right">
+    <a href="<c:url value='/auth/logout' />" >
+        <button type="button" class="btn btn-default btn-sm">
+          <span class="glyphicon glyphicon-log-out"></span> Log out</button></a>
+</div>
 
 <div class="container">
+<style>
+    h2{
+        background-image: url("http://bodywrapsstlouis.com/wp-content/uploads/2013/03/header-background-image.jpg");
+        color: white;
+        background-color: #3f3f5a;
+        padding: 30px 30px 30px 30px;
+        }
+</style>
   <h2>Curriculum vitae</h2>
-  <p>Can be used: .active, .success, .info, .warning, and .danger.</p>
   <table class="table table-striped col-lg-12">
     <thead>
       <tr class="info">
@@ -187,10 +203,12 @@ Language : <a href="?lang=en">English</a>|<a href="?lang=sk">Slovak</a><br/>
 
 </tbody>
 </table>
-    <div align="right">
-            <a href="<c:url value='/auth/update' />" >
-                <button type="button" class="btn btn-primary active">Edit</button></a>
-    </div>
+
+<div class="art" align="left">
+    <a href="<c:url value='/auth/update' />" >
+    <button type="button" class="btn btn-default">
+    <span class="glyphicon glyphicon-pencil"></span>Edit</button></a>
+ </div>
 
 </body>
 </html>
