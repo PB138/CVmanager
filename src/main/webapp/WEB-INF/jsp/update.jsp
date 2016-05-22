@@ -23,8 +23,15 @@ Language:
     <span class="lang-sm lang-lbl-full" lang="it"></span> <span class="caret"></span>
   </button>
   <ul class="dropdown-menu" role="menu">
-    <li><a href="?lang=en">English</a></li>
-    <li><a href="?lang=sk">Slovak</li>
+    <li><a href="?lang=en">
+    <img src="https://cdn2.iconfinder.com/data/icons/flags/flags/48/united-kingdom-great-britain.png" style="width:24px;height:24px;">
+    English</a>
+    </li>
+
+    <li><a href="?lang=sk">
+    <img src="https://cdn3.iconfinder.com/data/icons/finalflags/24/Slovakia-Flag.png" style="width:24px;height:24px;">
+    Slovak</a>
+    </li>
   </ul>
 </div>
 
@@ -51,7 +58,7 @@ Language:
         }
 </style>
 
-  <h2>Update</h2>
+
 
 </body>
 </html>
