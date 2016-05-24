@@ -42,7 +42,7 @@ Language:
 </style>
 
 <div align="right">
-    <a href="<c:url value='/auth/logout' />" >
+    <a href="<c:url value='/logout' />" >
         <button type="button" class="btn btn-default btn-sm">
           <span class="glyphicon glyphicon-log-out"></span> Log out</button></a>
 </div>
