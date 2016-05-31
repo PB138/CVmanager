@@ -5,7 +5,7 @@
  */
 package cz.muni.fi.pb138.cvmanager.service;
 
-import java.io.File;
+import java.io.*;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -13,8 +13,7 @@ import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
 import javax.xml.transform.stream.StreamSource;
 import cz.muni.fi.pb138.cvmanager.service.XmlService;
-import java.io.ByteArrayOutputStream;
-import java.io.IOException;
+
 import javax.xml.parsers.ParserConfigurationException;
 import javax.xml.transform.dom.DOMSource;
 import org.xml.sax.SAXException;
@@ -45,15 +44,13 @@ public class PDFgenerator {
         xsltProc.transform(source, new StreamResult(new File("cv.tex")));    
     }
     
-    public ByteArrayOutputStream LatexToPdf() throws IOException
+    public InputStream LatexToPdf() throws IOException
     {
         Runtime rt = Runtime.getRuntime();
         rt.exec(new String[]{"pdflatex", "cv.tex", "--output-directory="});
         
-        ByteArrayOutputStream output = new ByteArrayOutputStream();
-        File file = new File("cv.pdf");
-        
-        
+        InputStream output = new FileInputStream(new File("cv.pdf"));
+
         return output;
     }
 }
