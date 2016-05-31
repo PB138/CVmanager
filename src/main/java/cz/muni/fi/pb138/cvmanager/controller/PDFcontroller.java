@@ -41,11 +41,11 @@ public class PDFcontroller extends BaseController {
 //    }
 
     @RequestMapping(value = "/auth/download", method = RequestMethod.GET)
-    public void downloadPDF(@RequestParam("language") String lang, HttpServletResponse response)
+    public void downloadPDF(/*@RequestParam("language") String lang,*/ HttpServletResponse response)
     {
         try {
             //uncomment the calling of method when login finished
-            pdfGenerator.XmlToLatex(/*getPrincipalUsername()*/ "username", lang);
+            pdfGenerator.XmlToLatex(/*getPrincipalUsername()*/ "david", /*lang*/ "sk");
             InputStream pdf = pdfGenerator.LatexToPdf();
 
             response.setContentType("application/pdf");

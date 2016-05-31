@@ -8,8 +8,8 @@
 %----------------------------------------------------------------------------------------
 
 \documentclass[a4paper,12pt]{memoir} % Font and paper size
-
-\input{structure.tex} % Include the file specifying document layout and packages
+\newcommand{\folder}{../src/main/resources/xslt}
+\input{\folder/structure.tex} % Include the file specifying document layout and packages
 
 %----------------------------------------------------------------------------------------
 %	NAME AND CONTACT INFORMATION 

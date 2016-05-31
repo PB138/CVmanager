@@ -5,6 +5,9 @@
  */
 package cz.muni.fi.pb138.cvmanager.controller;
 
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 
 /**
@@ -15,11 +18,24 @@ import org.springframework.stereotype.Controller;
 public class BaseController {
     
     // *************************** Uncomment when authentication is done ************************************
-//    protected String getPrincipalUsername() {
+    //    protected String getPrincipalUsername() {
 //        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
 //        if (auth != null) {
 //            UserDetails userDetails = (UserDetails) auth.getPrincipal();
 //        }
 //        return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
 //    }
+
+    protected String getPrincipalUsername() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = null;
+        if (auth != null) {
+            userDetails = (UserDetails) auth.getPrincipal();
+        }
+        if(userDetails == null){
+            return null;
+        } else {
+            return userDetails.getUsername();
+        }
+    }
 }
