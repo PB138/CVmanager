@@ -5,10 +5,13 @@
  */
 package cz.muni.fi.pb138.cvmanager.controller;
 
+import org.springframework.stereotype.Controller;
+
 /**
  *
  * @author david
  */
+@Controller
 public class BaseController {
     
     // *************************** Uncomment when authentication is done ************************************
