@@ -30,7 +30,7 @@ public class PDFcontroller extends BaseController {
     //private MessageSource messageSource;
     
     @RequestMapping(value = "/auth/download", method = RequestMethod.GET)
-    public ByteArrayOutputStream downloadPDF(@RequestParam("lang") String lang)
+    public ByteArrayOutputStream downloadPDF(@RequestParam("language") String lang)
             throws TransformerException, ParserConfigurationException, IOException, SAXException
     {
         //uncomment the calling of method when login finished
