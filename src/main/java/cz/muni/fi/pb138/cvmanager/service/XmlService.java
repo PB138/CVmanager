@@ -52,9 +52,13 @@ public class XmlService {
      */
     public CurriculumVitae loadFromXml(String username) throws ParserConfigurationException,
             IOException, SAXException {
+        File file = new File(createXmlPath(username));
+        if (!file.exists()) {
+            return new CurriculumVitae();
+        }
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         DocumentBuilder builder = factory.newDocumentBuilder();
-        Document doc = builder.parse(createFile(username));
+        Document doc = builder.parse(file);
         CurriculumVitae cv = new CurriculumVitae();
         cv.setFullName(loadContent(doc, CurriculumVitaeElement.FULL_NAME.toString()));
         cv.setAddress(loadContent(doc, CurriculumVitaeElement.ADDRESS.toString()));
@@ -287,7 +291,9 @@ public class XmlService {
         List<String> contents = new ArrayList<String>();
         Element element;
         element = (Element) nodeList.item(0);
-        contents.add(element.getTextContent());
+        if(element != null) {
+            contents.add(element.getTextContent());
+        }
         return !contents.isEmpty() ? contents.get(0).trim() : null;
     }
 
@@ -318,13 +324,13 @@ public class XmlService {
         Node cvNode = doc.getDocumentElement();
         Element personalInformation = doc.createElement(CurriculumVitaeElement.PERSONAL_INFORMATION.toString());
         cvNode.appendChild(personalInformation);
-        if(!cv.getFullName().isEmpty())
+        if(cv.getFullName() != null && !cv.getFullName().isEmpty())
             addChildElement(doc, personalInformation, CurriculumVitaeElement.FULL_NAME.toString(), cv.getFullName());
-        if(!cv.getAddress().isEmpty())
+        if(cv.getAddress() != null && !cv.getAddress().isEmpty())
             addChildElement(doc, personalInformation, CurriculumVitaeElement.ADDRESS.toString(), cv.getAddress());
-        if(!cv.getBirthday().isEmpty())
+        if(cv.getBirthday() != null && !cv.getBirthday().isEmpty())
             addChildElement(doc, personalInformation, CurriculumVitaeElement.BIRTHDAY.toString(), cv.getBirthday());
-        if(cv.getContacts() != null && !cv.getContacts().isEmpty()) {
+        if(cv.getContacts() != null && cv.getContacts() != null && !cv.getContacts().isEmpty()) {
             Element contacts = doc.createElement(CurriculumVitaeElement.CONTACTS.toString());
             personalInformation.appendChild(contacts);
             for(Contact contact : cv.getContacts()) {
