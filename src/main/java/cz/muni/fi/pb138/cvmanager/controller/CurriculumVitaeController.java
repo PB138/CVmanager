@@ -36,7 +36,7 @@ public class CurriculumVitaeController {
 
         // *************************** Uncomment when authentication is done ************************************
         //model.addObject("cv", xmlService.loadFromXml(getPrincipalUsername()));
-
+        model.addObject("cv", new CurriculumVitae());
         model.setViewName("update");
         return model;
     }

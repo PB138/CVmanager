@@ -1,3 +1,4 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
   User: nfabian
@@ -58,6 +59,20 @@ Language:
         }
 </style>
 
+    <form:form method="POST" modelAttribute="cv" action="${pageContext.request.contextPath}/auth/update">
+    <table>
+        <tbody>
+        <tr>
+            <td>Name:</td>
+            <td><form:input path="fullName"></form:input></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Save"></td>
+            <td></td>
+        </tr>
+        </tbody>
+    </table>
+    </form:form>
 
 
 </body>

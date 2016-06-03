@@ -1,5 +1,6 @@
 package cz.muni.fi.pb138.cvmanager.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,6 +21,13 @@ public class CurriculumVitae {
     private List<Hobby> hobbies;
 
     public CurriculumVitae() {
+        contacts = new ArrayList<Contact>();
+        workExperience = new ArrayList<Work>();
+        educations = new ArrayList<Education>();
+        achievements = new ArrayList<Achievement>();
+        languages = new ArrayList<Language>();
+        skills = new ArrayList<Skill>();
+        hobbies = new ArrayList<Hobby>();
     }
 
     public String getFullName() {
