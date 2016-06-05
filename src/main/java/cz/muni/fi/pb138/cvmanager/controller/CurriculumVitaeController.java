@@ -64,4 +64,11 @@ public class CurriculumVitaeController {
         }
         return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
     }
+
+
+    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
+    public ModelAndView index() {
+        ModelAndView model = new ModelAndView();
+        return model;
+    }
 }
