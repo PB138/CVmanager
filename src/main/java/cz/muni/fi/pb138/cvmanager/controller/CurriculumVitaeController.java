@@ -65,8 +65,10 @@ public class CurriculumVitaeController {
         return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
     }
 
-    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
-    public String main() {
-        return "/";
+    @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
+    public ModelAndView main() {
+        ModelAndView model = new ModelAndView();
+        model.setViewName("index");
+        return model;
     }
 }
