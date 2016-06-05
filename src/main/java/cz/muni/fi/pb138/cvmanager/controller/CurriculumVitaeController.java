@@ -29,7 +29,7 @@ public class CurriculumVitaeController {
     @Autowired
     private XmlService xmlService;
 
-    @RequestMapping(value = {"/auth","/"}, method = RequestMethod.GET)
+    @RequestMapping(value = {"/auth"}, method = RequestMethod.GET)
     public ModelAndView load() throws IOException, SAXException, ParserConfigurationException {
         ModelAndView model = new ModelAndView();
         CurriculumVitae cv = xmlService.loadFromXml(getPrincipalUsername());
@@ -65,10 +65,8 @@ public class CurriculumVitaeController {
         return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
     }
 
-
-    @RequestMapping(value = {"/index"}, method = RequestMethod.GET)
-    public ModelAndView index() {
-        ModelAndView model = new ModelAndView();
-        return model;
+    @RequestMapping(value = {"/"}, method = RequestMethod.GET)
+    public String main() {
+        return "/";
     }
 }
