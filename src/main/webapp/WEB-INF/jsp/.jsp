@@ -2,6 +2,7 @@
 
 <html>
 <head>
+    <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -9,13 +10,6 @@
     <meta name="author" content="">
 
     <title>Curriculum Vitae App</title>
-
-    <!-- Custom Fonts -->
-    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-    <link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
 
 </head>
 
@@ -42,13 +36,23 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#application">Application</a>
+                    <a class="page-scroll" href="#application"><spring:message code="Application" /></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#team">Team</a>
+                    <a class="page-scroll" href="#team"><spring:message code="Team" /></a>
                 </li>
                 <li>
-                    <a class="redirect" href="${pageContext.request.contextPath}/login">Login</a>
+                    <a class="redirect" href="${pageContext.request.contextPath}/login"><spring:message code="LogIn" /></a>
+                </li>
+                <li>
+                    <div>
+                    <a href="?lang=en">
+                        <img src="https://cdn2.iconfinder.com/data/icons/flags/flags/48/united-kingdom-great-britain.png" style="width:20px;height:15px;">
+                        </a>
+                    <a href="?lang=sk">
+                        <img src="https://cdn3.iconfinder.com/data/icons/finalflags/24/Slovakia-Flag.png" style="width:20px;height:15px;">
+                        </a>
+                    </div>
                 </li>
 
             </ul>
@@ -60,9 +64,9 @@
 <header>
     <div class="container">
         <div class="intro-text">
-            <div class="intro-lead-in">Welcome To Our Application!</div>
-            <div class="intro-heading">Create your own CV today</div>
-            <a href="#application" class="page-scroll btn btn-xl">Tell Me More</a>
+            <div class="intro-lead-in"><spring:message code="Welcome" /></div>
+            <div class="intro-heading"><spring:message code="IndexBanner" /></div>
+            <a href="#application" class="page-scroll btn btn-xl"><spring:message code="TellMeMore" /></a>
         </div>
     </div>
 </header>
@@ -72,8 +76,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Application</h2>
-                <h3 class="section-subheading text-muted">Here you can register, create, or update your own CV.</h3>
+                <h2 class="section-heading"><spring:message code="Application" /></h2>
+                <h3 class="section-subheading text-muted"><spring:message code="AppText" /></h3>
             </div>
         </div>
         <div class="row text-center">
@@ -82,16 +86,16 @@
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-file-text fa-stack-1x fa-inverse"></i>
                     </span></a>
-                <h4 class="service-heading">View my CV</h4>
-                <p class="text-muted">Here you can view your own CV</p>
+                <h4 class="service-heading"><spring:message code="ViemCV" /></h4>
+                <p class="text-muted"><spring:message code="ViewCvText" /></p>
             </div>
             <div class="col-md-4">
                 <a href="${pageContext.request.contextPath}/auth/update"><span class="fa-stack fa-4x" href="/auth/update">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                     </span></a>
-                <h4 class="service-heading">Update</h4>
-                <p class="text-muted">Here you can update your CV.</p>
+                <h4 class="service-heading"><spring:message code="Update" /></h4>
+                <p class="text-muted"><spring:message code="UpdateText" /></p>
             </div>
             <div class="col-md-4">
                 <a href=""><span class="fa-stack fa-4x">
@@ -110,8 +114,8 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Our Amazing Team</h2>
-                <h3 class="section-subheading text-muted">This course learned us how to cooperate and work as a team.</h3>
+                <h2 class="section-heading"><spring:message code="TeamDesc" /></h2>
+                <h3 class="section-subheading text-muted"><spring:message code="TeamText" /></h3>
             </div>
         </div>
         <div class="row">
@@ -173,7 +177,7 @@
 
 
             <div class="col-lg-8 col-lg-offset-2 text-center">
-                <p class="large text-muted">With special thanks to our supervisor and consultant <a href="https://is.muni.cz/auth/osoba/208428">RNDr. Filip Nguyen.</a></p>
+                <p class="large text-muted"><spring:message code="ThanksToSupervisor"/> <a href="https://is.muni.cz/auth/osoba/208428">RNDr. Filip Nguyen.</a></p>
             </div>
 
         </div>
@@ -209,8 +213,6 @@
 </body>
 
 </html>
-
-
 
 
 
