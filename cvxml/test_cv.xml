@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<cv>
+	<fullName>FullName</fullName>
+	<address>Address</address>
+	<birthday>1.1.1960</birthday>
+	<contacts>
+		<contact id="Tel">111 222 333</contact>
+		<contact id="Email">email@centrum.sk</contact>
+	</contacts>
+	<personalProfile>
+		Volam sa Tomas a som student.
+	</personalProfile>
+	<workExperience>
+		<workItem from="1990" to="2012" company="Ceske tehliarne" position="Zametac">Pacilo sa mi tam. A bol som dobry :)</workItem>
+		<workItem from="1980" to="1990" company="Comp" position="manager">Wohooo</workItem>
+	</workExperience>
+	<educations>
+		<educationItem from="1970" to="1980" school="MUNI">FI, a som dokoncil</educationItem>
+		<educationItem from="1960" to="1970" school="gym">Mam maturitu :)</educationItem>
+	</educations>
+	<achievements>
+		<achievementItem year="1985" title="Winner">Programing competition</achievementItem>
+	</achievements>
+	<languages>
+		<languageItem lang="English" level="Fluent" />
+	</languages>
+	<skills>
+		<skillItem title="Diving">21 MSW</skillItem>
+	</skills>
+	<hobbies>
+		<hobbyItem title="Cycling">I just love it</hobbyItem>
+	</hobbies>
+</cv>
