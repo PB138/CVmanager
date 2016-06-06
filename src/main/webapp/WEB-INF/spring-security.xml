@@ -9,7 +9,7 @@
     <http auto-config="true" >
 
     <!--    <intercept-url pattern="/" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />  -->
-        <intercept-url pattern="/auth*" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
+        <intercept-url pattern="/auth/**" access="hasRole('ROLE_ADMIN') or hasRole('ROLE_USER')" />
 
         <logout logout-url="/j_spring_security_logout" />
 
