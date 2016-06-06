@@ -460,7 +460,8 @@ public class XmlService {
             List<Attribute> attributes = new ArrayList<Attribute>();
             if(skill.getTitle() != null && !skill.getTitle().isEmpty())
                 attributes.add(new Attribute(CurriculumVitaeAttribute.TITLE.toString(), skill.getTitle()));
-            addChildElement(doc, skillsElement, CurriculumVitaeElement.SKILL_ITEM.toString(), attributes);
+            addChildElement(doc, skillsElement,
+                    CurriculumVitaeElement.SKILL_ITEM.toString(), skill.getValue(), attributes);
         }
         cvNode.appendChild(skillsElement);
     }
@@ -477,7 +478,8 @@ public class XmlService {
             List<Attribute> attributes = new ArrayList<Attribute>();
             if(hobby.getTitle() != null && !hobby.getTitle().isEmpty())
                 attributes.add(new Attribute(CurriculumVitaeAttribute.TITLE.toString(), hobby.getTitle()));
-            addChildElement(doc, hobbiesElement, CurriculumVitaeElement.HOBBY_ITEM.toString(), attributes);
+            addChildElement(doc, hobbiesElement,
+                    CurriculumVitaeElement.HOBBY_ITEM.toString(), hobby.getValue(),attributes);
         }
         cvNode.appendChild(hobbiesElement);
     }
