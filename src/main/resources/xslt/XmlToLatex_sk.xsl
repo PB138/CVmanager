@@ -25,6 +25,7 @@
 datum narození:
 <xsl:value-of select="personalInformation/birthday"/>
 
+
 <xsl:for-each select="personalInformation/contacts/contact">
 	<xsl:value-of select="@id"/>: <xsl:value-of select="."/>
 </xsl:for-each>
