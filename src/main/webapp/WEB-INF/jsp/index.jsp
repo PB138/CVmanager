@@ -102,7 +102,7 @@
                 <p class="text-muted"><spring:message code="ViewCvText" /></p>
             </div>
             <div class="col-md-4">
-                <a href="${pageContext.request.contextPath}/auth/update"><span class="fa-stack fa-4x" href="/auth/update">
+                <a href="${pageContext.request.contextPath}/auth/update"><span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
                     </span></a>
@@ -227,24 +227,24 @@
 
 <!---------------------------------------- SCRIPTS  ------------------------------------>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 
 <!---------------------------------------- FONTS  -------------------------------------->
 
-<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
-<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
-<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+<link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" property="">
+<link href="http://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" property="">
+<link href='http://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css' property="">
+<link href='http://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css' property="">
+<link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css' property="">
 
 <!---------------------------------------- CSS  ---------------------------------------->
 
-<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-<link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/css/bootstrap.min.css">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" property="">
+
 
 <!--------- custom.css  ---------->
 
-<style>
+<style scoped>
     /*!
  * Agency v1.0.7 (http://startbootstrap.com/template-overviews/agency)
  * Copyright 2013-2016 Start Bootstrap
@@ -268,22 +268,11 @@
     p.large {
         font-size: 16px;
     }
-    a,
-    a:hover,
-    a:focus,
-    a:active,
-    a.active {
-        outline: none;
-    }
+
     a {
         color: #fed136;
     }
-    a:hover,
-    a:focus,
-    a:active,
-    a.active {
-        color: #fec503;
-    }
+
     h1,
     h2,
     h3,
@@ -294,59 +283,11 @@
         text-transform: uppercase;
         font-weight: 700;
     }
-    .img-centered {
-        margin: 0 auto;
-    }
+
     .bg-light-gray {
         background-color: #f7f7f7;
     }
-    .bg-darkest-gray {
-        background-color: #222222;
-    }
-    .btn-primary {
-        color: #ffffff;
-        background-color: #fed136;
-        border-color: #fed136;
-        font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        text-transform: uppercase;
-        font-weight: 700;
-    }
-    .btn-primary:hover,
-    .btn-primary:focus,
-    .btn-primary:active,
-    .btn-primary.active,
-    .open .dropdown-toggle.btn-primary {
-        color: #ffffff;
-        background-color: #fec503;
-        border-color: #f6bf01;
-    }
-    .btn-primary:active,
-    .btn-primary.active,
-    .open .dropdown-toggle.btn-primary {
-        background-image: none;
-    }
-    .btn-primary.disabled,
-    .btn-primary[disabled],
-    fieldset[disabled] .btn-primary,
-    .btn-primary.disabled:hover,
-    .btn-primary[disabled]:hover,
-    fieldset[disabled] .btn-primary:hover,
-    .btn-primary.disabled:focus,
-    .btn-primary[disabled]:focus,
-    fieldset[disabled] .btn-primary:focus,
-    .btn-primary.disabled:active,
-    .btn-primary[disabled]:active,
-    fieldset[disabled] .btn-primary:active,
-    .btn-primary.disabled.active,
-    .btn-primary[disabled].active,
-    fieldset[disabled] .btn-primary.active {
-        background-color: #fed136;
-        border-color: #fed136;
-    }
-    .btn-primary .badge {
-        color: #fed136;
-        background-color: #ffffff;
-    }
+
     .btn-xl {
         color: #ffffff;
         background-color: #fed136;
@@ -358,42 +299,7 @@
         font-size: 18px;
         padding: 20px 40px;
     }
-    .btn-xl:hover,
-    .btn-xl:focus,
-    .btn-xl:active,
-    .btn-xl.active,
-    .open .dropdown-toggle.btn-xl {
-        color: #ffffff;
-        background-color: #fec503;
-        border-color: #f6bf01;
-    }
-    .btn-xl:active,
-    .btn-xl.active,
-    .open .dropdown-toggle.btn-xl {
-        background-image: none;
-    }
-    .btn-xl.disabled,
-    .btn-xl[disabled],
-    fieldset[disabled] .btn-xl,
-    .btn-xl.disabled:hover,
-    .btn-xl[disabled]:hover,
-    fieldset[disabled] .btn-xl:hover,
-    .btn-xl.disabled:focus,
-    .btn-xl[disabled]:focus,
-    fieldset[disabled] .btn-xl:focus,
-    .btn-xl.disabled:active,
-    .btn-xl[disabled]:active,
-    fieldset[disabled] .btn-xl:active,
-    .btn-xl.disabled.active,
-    .btn-xl[disabled].active,
-    fieldset[disabled] .btn-xl.active {
-        background-color: #fed136;
-        border-color: #fed136;
-    }
-    .btn-xl .badge {
-        color: #fed136;
-        background-color: #ffffff;
-    }
+
     .navbar-default {
         background-color: #222222;
         border-color: transparent;
@@ -402,12 +308,7 @@
         color: #fed136;
         font-family: "Kaushan Script", "Helvetica Neue", Helvetica, Arial, cursive;
     }
-    .navbar-default .navbar-brand:hover,
-    .navbar-default .navbar-brand:focus,
-    .navbar-default .navbar-brand:active,
-    .navbar-default .navbar-brand.active {
-        color: #fec503;
-    }
+
     .navbar-default .navbar-collapse {
         border-color: rgba(255, 255, 255, 0.02);
     }
@@ -427,7 +328,7 @@
         text-transform: uppercase;
         font-weight: 400;
         letter-spacing: 1px;
-        color: yellow;
+
         color: white;
         text-shadow:
                 -1px -1px 0 #000,
@@ -468,19 +369,13 @@
         .navbar-default .navbar-nav > .active > a {
             border-radius: 3px;
         }
-        .navbar-default.navbar-shrink {
-            background-color: #222222;
-            padding: 10px 0;
-        }
+
         .navbar-default.navbar-shrink .navbar-brand {
             font-size: 1.5em;
         }
     }
     header {
-        background-image: url('https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/dist/img/header-bg.jpg?raw=true');
-        background-repeat: none;
-        background-attachment: scroll;
-        background-position: center center;
+        background: url('https://github.com/BlackrockDigital/startbootstrap-agency/blob/master/dist/img/header-bg.jpg?raw=true');
         -webkit-background-size: cover;
         -moz-background-size: cover;
         background-size: cover;
@@ -553,39 +448,7 @@
         margin: 15px 0;
         text-transform: none;
     }
-    #portfolio .portfolio-item {
-        margin: 0 0 15px;
-        right: 0;
-    }
-    #portfolio .portfolio-item .portfolio-link {
-        display: block;
-        position: relative;
-        max-width: 400px;
-        margin: 0 auto;
-    }
-    #portfolio .portfolio-item .portfolio-link .portfolio-hover {
-        background: rgba(254, 209, 54, 0.9);
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        opacity: 0;
-        transition: all ease 0.5s;
-        -webkit-transition: all ease 0.5s;
-        -moz-transition: all ease 0.5s;
-    }
-    #portfolio .portfolio-item .portfolio-link .portfolio-hover:hover {
-        opacity: 1;
-    }
-    #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content {
-        position: absolute;
-        width: 100%;
-        height: 20px;
-        font-size: 20px;
-        text-align: center;
-        top: 50%;
-        margin-top: -12px;
-        color: white;
-    }
+
     #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content i {
         margin-top: -12px;
     }
@@ -593,13 +456,7 @@
     #portfolio .portfolio-item .portfolio-link .portfolio-hover .portfolio-hover-content h4 {
         margin: 0;
     }
-    #portfolio .portfolio-item .portfolio-caption {
-        max-width: 400px;
-        margin: 0 auto;
-        background-color: white;
-        text-align: center;
-        padding: 25px;
-    }
+
     #portfolio .portfolio-item .portfolio-caption h4 {
         text-transform: none;
         margin: 0;
@@ -614,25 +471,8 @@
         z-index: 2;
     }
     @media (min-width: 767px) {
-        #portfolio .portfolio-item {
-            margin: 0 0 30px;
-        }
     }
-    .timeline {
-        list-style: none;
-        padding: 0;
-        position: relative;
-    }
-    .timeline:before {
-        top: 0;
-        bottom: 0;
-        position: absolute;
-        content: "";
-        width: 2px;
-        background-color: #f1f1f1;
-        left: 40px;
-        margin-left: -1.5px;
-    }
+
     .timeline > li {
         margin-bottom: 50px;
         position: relative;
@@ -646,60 +486,13 @@
     .timeline > li:after {
         clear: both;
     }
-    .timeline > li .timeline-panel {
-        width: 100%;
-        float: right;
-        padding: 0 20px 0 100px;
-        position: relative;
-        text-align: left;
-    }
-    .timeline > li .timeline-panel:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-    }
-    .timeline > li .timeline-panel:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-    }
-    .timeline > li .timeline-image {
-        left: 0;
-        margin-left: 0;
-        width: 80px;
-        height: 80px;
-        position: absolute;
-        z-index: 100;
-        background-color: #fed136;
-        color: white;
-        border-radius: 100%;
-        border: 7px solid #f1f1f1;
-        text-align: center;
-    }
+
     .timeline > li .timeline-image h4 {
         font-size: 10px;
         margin-top: 12px;
         line-height: 14px;
     }
-    .timeline > li.timeline-inverted > .timeline-panel {
-        float: right;
-        text-align: left;
-        padding: 0 20px 0 100px;
-    }
-    .timeline > li.timeline-inverted > .timeline-panel:before {
-        border-left-width: 0;
-        border-right-width: 15px;
-        left: -15px;
-        right: auto;
-    }
-    .timeline > li.timeline-inverted > .timeline-panel:after {
-        border-left-width: 0;
-        border-right-width: 14px;
-        left: -14px;
-        right: auto;
-    }
+
     .timeline > li:last-child {
         margin-bottom: 0;
     }
@@ -707,82 +500,41 @@
         margin-top: 0;
         color: inherit;
     }
-    .timeline .timeline-heading h4.subheading {
-        text-transform: none;
-    }
+
     .timeline .timeline-body > p,
     .timeline .timeline-body > ul {
         margin-bottom: 0;
     }
     @media (min-width: 768px) {
-        .timeline:before {
-            left: 50%;
-        }
         .timeline > li {
             margin-bottom: 100px;
             min-height: 100px;
         }
-        .timeline > li .timeline-panel {
-            width: 41%;
-            float: left;
-            padding: 0 20px 20px 30px;
-            text-align: right;
-        }
-        .timeline > li .timeline-image {
-            width: 100px;
-            height: 100px;
-            left: 50%;
-            margin-left: -50px;
-        }
+
         .timeline > li .timeline-image h4 {
             font-size: 13px;
             margin-top: 16px;
             line-height: 18px;
-        }
-        .timeline > li.timeline-inverted > .timeline-panel {
-            float: right;
-            text-align: left;
-            padding: 0 30px 20px 20px;
         }
     }
     @media (min-width: 992px) {
         .timeline > li {
             min-height: 150px;
         }
-        .timeline > li .timeline-panel {
-            padding: 0 20px 20px;
-        }
-        .timeline > li .timeline-image {
-            width: 150px;
-            height: 150px;
-            margin-left: -75px;
-        }
+
         .timeline > li .timeline-image h4 {
             font-size: 18px;
             margin-top: 30px;
             line-height: 26px;
-        }
-        .timeline > li.timeline-inverted > .timeline-panel {
-            padding: 0 20px 20px;
         }
     }
     @media (min-width: 1200px) {
         .timeline > li {
             min-height: 170px;
         }
-        .timeline > li .timeline-panel {
-            padding: 0 20px 20px 100px;
-        }
-        .timeline > li .timeline-image {
-            width: 170px;
-            height: 170px;
-            margin-left: -85px;
-        }
+
         .timeline > li .timeline-image h4 {
             margin-top: 40px;
-        }
-        .timeline > li.timeline-inverted > .timeline-panel {
-            padding: 0 100px 20px 20px;
         }
     }
     .team-member {
@@ -804,32 +556,15 @@
     aside.clients img {
         margin: 50px auto;
     }
-    section#contact {
-        background-color: #222222;
-        background-image:"map-image.png";
-        background-position: center;
-        background-repeat: no-repeat;
-    }
     section#contact .section-heading {
         color: white;
     }
-    section#contact .form-group {
-        margin-bottom: 25px;
-    }
+
     section#contact .form-group input,
     section#contact .form-group textarea {
         padding: 20px;
     }
-    section#contact .form-group input.form-control {
-        height: auto;
-    }
-    section#contact .form-group textarea.form-control {
-        height: 236px;
-    }
-    section#contact .form-control:focus {
-        border-color: #fed136;
-        box-shadow: none;
-    }
+
     section#contact ::-webkit-input-placeholder {
         font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-transform: uppercase;
@@ -856,9 +591,7 @@
         font-weight: 700;
         color: #bbbbbb;
     }
-    section#contact .text-danger {
-        color: #e74c3c;
-    }
+
     footer {
         padding: 25px 0;
         text-align: center;
@@ -867,14 +600,14 @@
         line-height: 40px;
         font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-transform: uppercase;
-        text-transform: none;
+
     }
     footer ul.quicklinks {
         margin-bottom: 0;
         line-height: 40px;
         font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
         text-transform: uppercase;
-        text-transform: none;
+
     }
     ul.social-buttons {
         margin-bottom: 0;
@@ -898,22 +631,7 @@
     ul.social-buttons li a:active {
         background-color: #fed136;
     }
-    .btn:focus,
-    .btn:active,
-    .btn.active,
-    .btn:active:focus {
-        outline: none;
-    }
-    .portfolio-modal .modal-content {
-        border-radius: 0;
-        background-clip: border-box;
-        -webkit-box-shadow: none;
-        box-shadow: none;
-        border: none;
-        min-height: 100%;
-        padding: 100px 0;
-        text-align: center;
-    }
+
     .portfolio-modal .modal-content h2 {
         margin-bottom: 15px;
         font-size: 3em;
@@ -921,58 +639,11 @@
     .portfolio-modal .modal-content p {
         margin-bottom: 30px;
     }
-    .portfolio-modal .modal-content p.item-intro {
-        margin: 20px 0 30px;
-        font-family: "Droid Serif", "Helvetica Neue", Helvetica, Arial, sans-serif;
-        font-style: italic;
-        font-size: 16px;
-    }
-    .portfolio-modal .modal-content ul.list-inline {
-        margin-bottom: 30px;
-        margin-top: 0;
-    }
+
     .portfolio-modal .modal-content img {
         margin-bottom: 30px;
     }
-    .portfolio-modal .close-modal {
-        position: absolute;
-        width: 75px;
-        height: 75px;
-        background-color: transparent;
-        top: 25px;
-        right: 25px;
-        cursor: pointer;
-    }
-    .portfolio-modal .close-modal:hover {
-        opacity: 0.3;
-    }
-    .portfolio-modal .close-modal .lr {
-        height: 75px;
-        width: 1px;
-        margin-left: 35px;
-        background-color: #222222;
-        transform: rotate(45deg);
-        -ms-transform: rotate(45deg);
-        /* IE 9 */
-        -webkit-transform: rotate(45deg);
-        /* Safari and Chrome */
-        z-index: 1051;
-    }
-    .portfolio-modal .close-modal .lr .rl {
-        height: 75px;
-        width: 1px;
-        background-color: #222222;
-        transform: rotate(90deg);
-        -ms-transform: rotate(90deg);
-        /* IE 9 */
-        -webkit-transform: rotate(90deg);
-        /* Safari and Chrome */
-        z-index: 1052;
-    }
-    .portfolio-modal .modal-backdrop {
-        opacity: 0;
-        display: none;
-    }
+
     ::-moz-selection {
         text-shadow: none;
         background: #fed136;
@@ -987,9 +658,7 @@
     img::-moz-selection {
         background: transparent;
     }
-    body {
-        webkit-tap-highlight-color: #fed136;
-    }
+
 </style>
 
 </body>
