@@ -41,7 +41,7 @@ public class PDFgenerator {
 
 
     public void XmlToLatex(String username, String lang) 
-            throws TransformerConfigurationException, TransformerException, ParserConfigurationException, IOException, SAXException
+            throws TransformerException, ParserConfigurationException, IOException, SAXException
     {
         TransformerFactory tf = TransformerFactory.newInstance();
         
@@ -72,11 +72,26 @@ public class PDFgenerator {
             if(key == null){
                 break;
             }
+
+            for (WatchEvent<?> event : key.pollEvents()) {
+                // get event type
+                WatchEvent.Kind<?> kind = event.kind();
+
+                // get file name
+                @SuppressWarnings("unchecked")
+                WatchEvent<Path> ev = (WatchEvent<Path>) event;
+                Path fileName = ev.context();
+
+                System.out.println(kind.name() + ": " + fileName);
+            }
+
             boolean valid = key.reset();
             if(!valid){
                 break;
             }
         }
+
+        System.out.println("end of cycle");
 
         //dodělání tlačítka pro download do jsp
 //        <button type = "button" class = "btn btn-default btn-lg ">
@@ -84,8 +99,7 @@ public class PDFgenerator {
 //            </button>
 
         File pdf = new File("cvxml/cv.pdf");
-        InputStream output = new FileInputStream(pdf);
 
-        return output;
+        return new FileInputStream(pdf);
     }
 }
