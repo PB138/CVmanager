@@ -40,7 +40,7 @@ public class PDFgenerator {
         
 
 
-    public void XmlToLatex(String username, String lang) 
+    public void xmlToLatex(String username, String lang)
             throws TransformerException, ParserConfigurationException, IOException, SAXException
     {
         TransformerFactory tf = TransformerFactory.newInstance();
@@ -54,7 +54,7 @@ public class PDFgenerator {
 
 
 
-    public InputStream LatexToPdf() throws IOException, InterruptedException, NullPointerException
+    public InputStream latexToPdf() throws IOException, InterruptedException, NullPointerException
     {
         ProcessBuilder pb = new ProcessBuilder("pdflatex", "cv.tex", "--output-directory=");
         File file = new File("cvxml/");

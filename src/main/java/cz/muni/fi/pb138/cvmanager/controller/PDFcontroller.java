@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -35,8 +34,8 @@ public class PDFcontroller extends BaseController {
 //            throws TransformerException, ParserConfigurationException, IOException, SAXException
 //    {
 //        //uncomment the calling of method when login finished
-//        pdfGenerator.XmlToLatex(/*getPrincipalUsername()*/ "username", lang);
-//        ByteArrayOutputStream pdf = pdfGenerator.LatexToPdf();
+//        pdfGenerator.xmlToLatex(/*getPrincipalUsername()*/ "username", lang);
+//        ByteArrayOutputStream pdf = pdfGenerator.latexToPdf();
 //        return pdf;
 //    }
 
@@ -45,8 +44,8 @@ public class PDFcontroller extends BaseController {
     {
         try {
             //uncomment the calling of method when login finished
-            pdfGenerator.XmlToLatex(/*getPrincipalUsername()*/ "david", /*lang*/ "sk");
-            InputStream pdf = pdfGenerator.LatexToPdf();
+            pdfGenerator.xmlToLatex(/*getPrincipalUsername()*/ "david", /*lang*/ "sk");
+            InputStream pdf = pdfGenerator.latexToPdf();
 
             response.setContentType("application/pdf");
             FileCopyUtils.copy(pdf, response.getOutputStream());
