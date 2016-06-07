@@ -6,6 +6,7 @@
 package cz.muni.fi.pb138.cvmanager.service;
 
 import java.io.*;
+import java.nio.file.*;
 import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -36,7 +37,8 @@ public class PDFgenerator {
     @Autowired
     private XmlService xmlService;
         
-    
+
+
     public void XmlToLatex(String username, String lang) 
             throws TransformerConfigurationException, TransformerException, ParserConfigurationException, IOException, SAXException
     {
@@ -48,8 +50,10 @@ public class PDFgenerator {
         DOMSource source = new DOMSource(xmlService.createDocument(xmlService.loadFromXml(username)));
         xsltProc.transform(source, new StreamResult(new File("cvxml/cv.tex")));
     }
-    
-    public InputStream LatexToPdf() throws IOException
+
+
+
+    public InputStream LatexToPdf() throws IOException, InterruptedException
     {
         //Runtime rt = Runtime.getRuntime();
         //rt.exec(new String[]{"pdflatex", "cv.tex", "--output-directory="});
@@ -59,18 +63,55 @@ public class PDFgenerator {
         pb.directory(file);
         Process p = pb.start();
 
-        File pdf = new File("cv.pdf");
 
         //dodělat checkování esi už je cv.pdf vytvořeno a už se do něj nezapisuje, pak až ho vrátit. Možná udělat ve druhým vlákně, aby neblokovalo zbytek aplikace.
-//        WatchService watcher = FileSystems.getDefault().newWatchService();
-//        Path dir = Paths.get("Path/To/Watched/Directory");
-//        dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
+        WatchService watcher = FileSystems.getDefault().newWatchService();
+        Path dir = Paths.get("cvxml/");
+        dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
+
+        File pdf = new File("cvxml/cv.tex");
+
+
+        while(true) {
+            WatchKey key;
+            // wait for a key to be available
+            key = watcher.take();
+
+            for (WatchEvent<?> event : key.pollEvents()) {
+                // get event type
+                WatchEvent.Kind<?> kind = event.kind();
+
+                // get file name
+                @SuppressWarnings("unchecked")
+                WatchEvent<Path> ev = (WatchEvent<Path>) event;
+                Path fileName = ev.context();
+
+                System.out.println(kind.name() + ": " + fileName);
+
+                if (kind == ENTRY_CREATE) {
+                    // process create event
+                    pdf = new File("cv.pdf");
+
+                } else if (kind == ENTRY_MODIFY) {
+                    // process modify event
+                }
+            }
+
+            // IMPORTANT: The key must be reset after processed
+            boolean valid = key.reset();
+            if(!valid){
+                break;
+            }
+    }
 
         //dodělání tlačítka pro download do jsp
 //        <button type = "button" class = "btn btn-default btn-lg ">
 //            Default Button
 //            </button>
 
+        if(pdf == null){
+
+        }
         InputStream output = new FileInputStream(pdf);
 
         return output;
