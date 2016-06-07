@@ -11,6 +11,7 @@ import java.nio.file.FileSystems;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.WatchService;
+import java.util.concurrent.TimeUnit;
 import javax.xml.transform.Transformer;
 import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
@@ -53,65 +54,36 @@ public class PDFgenerator {
 
 
 
-    public InputStream LatexToPdf() throws IOException, InterruptedException
+    public InputStream LatexToPdf() throws IOException, InterruptedException, NullPointerException
     {
-        //Runtime rt = Runtime.getRuntime();
-        //rt.exec(new String[]{"pdflatex", "cv.tex", "--output-directory="});
-
         ProcessBuilder pb = new ProcessBuilder("pdflatex", "cv.tex", "--output-directory=");
         File file = new File("cvxml/");
         pb.directory(file);
         Process p = pb.start();
-
 
         //dodělat checkování esi už je cv.pdf vytvořeno a už se do něj nezapisuje, pak až ho vrátit. Možná udělat ve druhým vlákně, aby neblokovalo zbytek aplikace.
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir = Paths.get("cvxml/");
         dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
 
-        File pdf = new File("cvxml/cv.tex");
-
-
         while(true) {
-            WatchKey key;
-            // wait for a key to be available
-            key = watcher.take();
-
-            for (WatchEvent<?> event : key.pollEvents()) {
-                // get event type
-                WatchEvent.Kind<?> kind = event.kind();
-
-                // get file name
-                @SuppressWarnings("unchecked")
-                WatchEvent<Path> ev = (WatchEvent<Path>) event;
-                Path fileName = ev.context();
-
-                System.out.println(kind.name() + ": " + fileName);
-
-                if (kind == ENTRY_CREATE) {
-                    // process create event
-                    pdf = new File("cv.pdf");
-
-                } else if (kind == ENTRY_MODIFY) {
-                    // process modify event
-                }
+            // wait for a key to be available for 1000 milisec
+            WatchKey key = watcher.poll(1000L, TimeUnit.MILLISECONDS);
+            if(key == null){
+                break;
             }
-
-            // IMPORTANT: The key must be reset after processed
             boolean valid = key.reset();
             if(!valid){
                 break;
             }
-    }
+        }
 
         //dodělání tlačítka pro download do jsp
 //        <button type = "button" class = "btn btn-default btn-lg ">
 //            Default Button
 //            </button>
 
-        if(pdf == null){
-
-        }
+        File pdf = new File("cvxml/cv.pdf");
         InputStream output = new FileInputStream(pdf);
 
         return output;
