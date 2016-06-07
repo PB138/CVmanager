@@ -3,8 +3,8 @@ package cz.muni.fi.pb138.cvmanager.service;
 import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
-import cz.muni.fi.pb138.cvmanager.TestEntityFactory;
 import cz.muni.fi.pb138.cvmanager.entity.CurriculumVitae;
+import cz.muni.fi.pb138.cvmanager.service.XmlService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -12,19 +12,13 @@ import org.junit.runner.RunWith;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-import javax.xml.XMLConstants;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
-import javax.xml.transform.Source;
 import javax.xml.transform.TransformerException;
-import javax.xml.transform.stream.StreamSource;
-import javax.xml.validation.Schema;
-import javax.xml.validation.SchemaFactory;
-import javax.xml.validation.Validator;
+import cz.muni.fi.pb138.cvmanager.TestEntityFactory;
 import java.io.File;
 import java.io.IOException;
-import java.net.URL;
 
 /**
  * Created by nfabian on 6.6.16.

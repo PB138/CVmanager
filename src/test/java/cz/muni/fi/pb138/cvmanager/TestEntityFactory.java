@@ -1,5 +1,6 @@
 package cz.muni.fi.pb138.cvmanager;
 
+
 import cz.muni.fi.pb138.cvmanager.entity.*;
 
 /**
