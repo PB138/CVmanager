@@ -3,6 +3,7 @@
 <html>
 <head>
     <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
     <%@ page contentType="text/html;charset=UTF-8" language="java" %>
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -41,9 +42,20 @@
                 <li>
                     <a class="page-scroll" href="#team"><spring:message code="Team" /></a>
                 </li>
-                <li>
-                    <a class="redirect" href="${pageContext.request.contextPath}/login"><spring:message code="LogIn" /></a>
-                </li>
+
+                <c:if test="${empty pageContext.request.userPrincipal}">
+                    <li>
+                        <a class="redirect" href="${pageContext.request.contextPath}/login"><spring:message code="LogIn" /></a>
+                    </li>
+                </c:if>
+
+                <c:if test="${not empty pageContext.request.userPrincipal}">
+                    <li>
+                        <a class="redirect" href="${pageContext.request.contextPath}/logout"><spring:message code="LogOff" /></a>
+                    </li>
+                </c:if>
+
+
                 <li>
                     <div>
                     <a href="?lang=en">
@@ -210,9 +222,6 @@
     </div>
 </footer>
 
-</body>
-
-</html>
 
 
 
@@ -231,7 +240,7 @@
 <!---------------------------------------- CSS  ---------------------------------------->
 
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-
+<link rel="stylesheet" href="${pageContext.request.contextPath}/WEB-INF/css/bootstrap.min.css">
 
 <!--------- custom.css  ---------->
 
@@ -982,3 +991,7 @@
         webkit-tap-highlight-color: #fed136;
     }
 </style>
+
+</body>
+
+</html>
