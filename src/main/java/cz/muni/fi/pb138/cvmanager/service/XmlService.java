@@ -330,7 +330,7 @@ public class XmlService {
             addChildElement(doc, personalInformation, CurriculumVitaeElement.ADDRESS.toString(), cv.getAddress());
         if(cv.getBirthday() != null && !cv.getBirthday().isEmpty())
             addChildElement(doc, personalInformation, CurriculumVitaeElement.BIRTHDAY.toString(), cv.getBirthday());
-        if(cv.getContacts() != null && cv.getContacts() != null && !cv.getContacts().isEmpty()) {
+        if(cv.getContacts() != null && !cv.getContacts().isEmpty()) {
             Element contacts = doc.createElement(CurriculumVitaeElement.CONTACTS.toString());
             personalInformation.appendChild(contacts);
             for(Contact contact : cv.getContacts()) {
@@ -522,9 +522,9 @@ public class XmlService {
         return XML_CV_FOLDER + "/" + username + "_cv.xml";
     }
 
-    private class Attribute {
-        private String key;
-        private String value;
+    private static class Attribute {
+        private static String key;
+        private static String value;
 
         public Attribute(String key, String value) {
             this.key = key;

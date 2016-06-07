@@ -32,7 +32,7 @@ public class PDFgenerator {
     private XmlService xmlService;
         
     
-    public void XmlToLatex(String username)throws TransformerConfigurationException, TransformerException,
+    public void xmlToLatex(String username)throws TransformerConfigurationException, TransformerException,
             ParserConfigurationException, IOException, SAXException
     {
         TransformerFactory tf = TransformerFactory.newInstance();
@@ -41,7 +41,7 @@ public class PDFgenerator {
         xsltProc.transform(source, new StreamResult(new File("CV.tex")));    
     }
     
-    public void LatexToPdf() throws IOException
+    public void latexToPdf() throws IOException
     {
         Runtime rt = Runtime.getRuntime();
         rt.exec(new String[]{"pdflatex", "cv.tex", "--output-directory="});

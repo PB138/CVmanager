@@ -58,11 +58,8 @@ public class CurriculumVitaeController {
 
     private String getPrincipalUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = null;
-        if (auth != null) {
-            userDetails = (UserDetails) auth.getPrincipal();
-        }
-        return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        return userDetails.getUsername();
     }
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
