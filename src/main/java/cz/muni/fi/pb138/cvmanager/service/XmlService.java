@@ -522,9 +522,9 @@ public class XmlService {
         return XML_CV_FOLDER + "/" + username + "_cv.xml";
     }
 
-    private static class Attribute {
-        private static String key;
-        private static String value;
+    private class Attribute {
+        private String key;
+        private String value;
 
         public Attribute(String key, String value) {
             this.key = key;
