@@ -22,7 +22,7 @@
 
 <xsl:value-of select="personalInformation/fullName"/>
 
-date of birth:
+datum narození:
 <xsl:value-of select="personalInformation/birthday"/>
 
 <xsl:for-each select="personalInformation/contacts/contact">
@@ -31,7 +31,7 @@ date of birth:
 
 \Sep % Some whitespace
 
-\textbf{Address} \\
+\textbf{Adresa} \\
 <xsl:value-of select="personalInformation/address"/>
 \vfill % Whitespace under this block to push it up under the photo
 \end{flushright}
@@ -145,3 +145,4 @@ date of birth:
 </xsl:template>
 
 </xsl:stylesheet> 
+

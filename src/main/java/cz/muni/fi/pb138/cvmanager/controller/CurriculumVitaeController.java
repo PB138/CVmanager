@@ -24,7 +24,7 @@ import java.io.IOException;
  */
 
 @Controller
-public class CurriculumVitaeController {
+public class CurriculumVitaeController extends BaseController {
 
     @Autowired
     private XmlService xmlService;
@@ -56,11 +56,6 @@ public class CurriculumVitaeController {
         return model;
     }
 
-    private String getPrincipalUsername() {
-        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) auth.getPrincipal();
-        return userDetails.getUsername();
-    }
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
     public ModelAndView main() {

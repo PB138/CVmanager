@@ -20,9 +20,8 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class LoginController {
 
- @Autowired
- private AccountService accountService;
-
+    @Autowired
+    private AccountService accountService;
 
 
     @RequestMapping(value = "/users",method = RequestMethod.GET)
