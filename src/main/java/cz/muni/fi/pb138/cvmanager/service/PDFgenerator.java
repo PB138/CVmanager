@@ -49,19 +49,19 @@ public class PDFgenerator {
                 tf.newTransformer(new StreamSource(new File("src/main/resources/xslt/XmlToLatex_sk.xsl")))
                 : tf.newTransformer(new StreamSource(new File("src/main/resources/xslt/XmlToLatex_en.xsl")));
         DOMSource source = new DOMSource(xmlService.createDocument(xmlService.loadFromXml(username)));
-        xsltProc.transform(source, new StreamResult(new File("cvxml/cv.tex")));
+        xsltProc.transform(source, new StreamResult(new File("cvxml/" + username + "_cv.tex")));
     }
 
 
 
-    public InputStream latexToPdf() throws IOException, InterruptedException, NullPointerException
+    public InputStream latexToPdf(String username)
+            throws IOException, InterruptedException, NullPointerException
     {
-        ProcessBuilder pb = new ProcessBuilder("pdflatex", "cv.tex", "--output-directory=");
+        ProcessBuilder pb = new ProcessBuilder("pdflatex", username + "_cv.tex", "--output-directory=");
         File file = new File("cvxml/");
         pb.directory(file);
         Process p = pb.start();
 
-        //dodělat checkování esi už je cv.pdf vytvořeno a už se do něj nezapisuje, pak až ho vrátit. Možná udělat ve druhým vlákně, aby neblokovalo zbytek aplikace.
         WatchService watcher = FileSystems.getDefault().newWatchService();
         Path dir = Paths.get("cvxml/");
         dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
@@ -98,7 +98,7 @@ public class PDFgenerator {
 //            Default Button
 //            </button>
 
-        File pdf = new File("cvxml/cv.pdf");
+        File pdf = new File("cvxml/" + username + "_cv.pdf");
 
         return new FileInputStream(pdf);
     }

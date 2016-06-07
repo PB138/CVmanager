@@ -44,8 +44,8 @@ public class PDFcontroller extends BaseController {
     {
         try {
             //uncomment the calling of method when login finished
-            pdfGenerator.xmlToLatex(/*getPrincipalUsername()*/ "david", /*lang*/ "sk");
-            InputStream pdf = pdfGenerator.latexToPdf();
+            pdfGenerator.xmlToLatex(getPrincipalUsername(), /*lang*/ "sk");
+            InputStream pdf = pdfGenerator.latexToPdf(getPrincipalUsername());
 
             response.setContentType("application/pdf");
             FileCopyUtils.copy(pdf, response.getOutputStream());

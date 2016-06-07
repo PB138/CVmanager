@@ -16,15 +16,7 @@ import org.springframework.stereotype.Controller;
  */
 @Controller
 public class BaseController {
-    
-    // *************************** Uncomment when authentication is done ************************************
-    //    protected String getPrincipalUsername() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        if (auth != null) {
-//            UserDetails userDetails = (UserDetails) auth.getPrincipal();
-//        }
-//        return userDetails.getUsername().isEmpty() ? null : userDetails.getUsername();
-//    }
+
 
     protected String getPrincipalUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
