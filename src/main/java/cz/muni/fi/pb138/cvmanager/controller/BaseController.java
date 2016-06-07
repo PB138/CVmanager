@@ -17,17 +17,22 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class BaseController {
 
-
     protected String getPrincipalUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = null;
-        if (auth != null) {
-            userDetails = (UserDetails) auth.getPrincipal();
-        }
-        if(userDetails == null){
-            return null;
-        } else {
-            return userDetails.getUsername();
-        }
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        return userDetails.getUsername();
     }
+
+//    protected String getPrincipalUsername() {
+//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+//        UserDetails userDetails = null;
+//        if (auth != null) {
+//            userDetails = (UserDetails) auth.getPrincipal();
+//        }
+//        if(userDetails == null){
+//            return null;
+//        } else {
+//            return userDetails.getUsername();
+//        }
+//    }
 }
