@@ -36,16 +36,15 @@
 
 
 <div class="container">
-    <div class="row">
-        <div class="col-md-4 col-md-offset-7">
+    <div class="row" style="margin: 150px 0px">
+        <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
 
                 <c:if test="${not empty logout}">
                     <div class="panel-heading"> <strong class="">LogOut</strong></div>
                     <div class="panel-body">
                         <div class="col-sm-offset-3 col-sm-9"><strong>${logout}</strong></div>
-                        <br>
-                        <div class="col-sm-offset-3 col-sm-9">You will be redirected!</div>
+                        <div class="col-sm-offset-3 col-sm-9" style=" color: red;margin-top: 50px;  margin-bottom: 50px">You will be redirected!</div>
                     </div>
                     <div class="panel-footer">Come back soon!</div>
 
@@ -53,7 +52,7 @@
                     <script>
                         var timer = setTimeout(function() {
                             window.location='/cvmanager/index'
-                        }, 5000);
+                        }, 3000);
                     </script>
 
 
