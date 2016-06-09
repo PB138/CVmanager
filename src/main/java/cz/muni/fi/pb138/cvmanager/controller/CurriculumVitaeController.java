@@ -49,11 +49,8 @@ public class CurriculumVitaeController extends BaseController {
     @RequestMapping(value = "/auth/update", method = RequestMethod.POST)
     public ModelAndView update(@ModelAttribute("CurriculumVitae") CurriculumVitae cv)
             throws IOException, TransformerException, ParserConfigurationException {
-        ModelAndView model = new ModelAndView();
         xmlService.serializeToXml(getPrincipalUsername(), cv);
-        model.addObject("cv", cv);
-        model.setViewName("curriculumVitae");
-        return model;
+        return new ModelAndView("redirect:/auth");
     }
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
