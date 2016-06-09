@@ -5,6 +5,7 @@ import org.junit.runner.RunWith;
 import org.mockito.MockitoAnnotations;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.test.web.servlet.setup.SecurityMockMvcConfigurers;
+import org.springframework.security.web.FilterChainProxy;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
@@ -21,18 +22,31 @@ import org.springframework.web.context.WebApplicationContext;
 @ContextConfiguration({"file:src/main/webapp/WEB-INF/spring-modules.xml"})
 public abstract class ControllerTestTemplate {
 
+//    @Autowired
+//    private WebApplicationContext wac;
+
     @Autowired
-    private WebApplicationContext wac;
+    FilterChainProxy filterChainProxy;
 
     protected MockMvc mockMvc;
 
-    @Before
-    public void setup() {
+//    @Before
+//    public void setup() {
+//        MockitoAnnotations.initMocks(this);
+//
+//        this.mockMvc = MockMvcBuilders
+//                .webAppContextSetup(this.wac)
+//                .apply(SecurityMockMvcConfigurers.springSecurity())
+//                .build();
+//    }
+
+
+    public void setup(BaseController controller) {
         MockitoAnnotations.initMocks(this);
 
         this.mockMvc = MockMvcBuilders
-                .webAppContextSetup(this.wac)
-                .apply(SecurityMockMvcConfigurers.springSecurity())
+                .standaloneSetup(controller)
+                .apply(SecurityMockMvcConfigurers.springSecurity(filterChainProxy))
                 .build();
     }
 }

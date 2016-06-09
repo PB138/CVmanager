@@ -3,6 +3,7 @@ package cz.muni.fi.pb138.cvmanager.controller;
 import cz.muni.fi.pb138.cvmanager.entity.CurriculumVitae;
 import cz.muni.fi.pb138.cvmanager.service.XmlService;
 
+import org.junit.Before;
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -22,7 +23,12 @@ public class CurriculumVitaeControllerTest extends ControllerTestTemplate {
     XmlService xmlService;
 
     @InjectMocks
-    CurriculumVitaeController curriculumVitaeController;
+    CurriculumVitaeController curriculumVitaeController = new CurriculumVitaeController();
+
+    @Before
+    public void setup() {
+        super.setup(curriculumVitaeController);
+    }
 
     @Test
     public void indexTest() throws Exception {
@@ -44,14 +50,14 @@ public class CurriculumVitaeControllerTest extends ControllerTestTemplate {
     }
 
     @Test
-    public void updateTest() throws Exception {
+    public void editTest() throws Exception {
         Mockito.when(xmlService.loadFromXml(Mockito.anyString()))
                 .thenReturn(new CurriculumVitae());
 
         mockMvc.perform(get("/auth/update")
                     .with(SecurityMockMvcRequestPostProcessors.user("user")))
                 .andExpect(status().isOk())
-                .andExpect(view().name("update"))
+                .andExpect(view().name("edit"))
                 .andExpect(model().attributeExists("cv"));
     }
 }

@@ -39,15 +39,15 @@ public class CurriculumVitaeController extends BaseController {
     }
 
     @RequestMapping(value = "/auth/update", method = RequestMethod.GET)
-    public ModelAndView update() throws IOException, SAXException, ParserConfigurationException {
+    public ModelAndView edit() throws IOException, SAXException, ParserConfigurationException {
         ModelAndView model = new ModelAndView();
         model.addObject("cv", xmlService.loadFromXml(getPrincipalUsername()));
-        model.setViewName("update");
+        model.setViewName("edit");
         return model;
     }
 
     @RequestMapping(value = "/auth/update", method = RequestMethod.POST)
-    public ModelAndView update(@ModelAttribute("CurriculumVitae") CurriculumVitae cv)
+    public ModelAndView edit(@ModelAttribute("CurriculumVitae") CurriculumVitae cv)
             throws IOException, TransformerException, ParserConfigurationException {
         xmlService.serializeToXml(getPrincipalUsername(), cv);
         return new ModelAndView("redirect:/auth");
