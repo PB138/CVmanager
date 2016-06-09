@@ -20,9 +20,6 @@ import static junit.framework.TestCase.assertTrue;
 @RunWith(DataProviderRunner.class)
 public class PDFgeneratorTest {
 
-    @Mock
-    XmlService xmlService;
-
     PDFgenerator pdfGenerator;
 
     @Before
@@ -30,26 +27,30 @@ public class PDFgeneratorTest {
         pdfGenerator = new PDFgenerator();
     }
 
-    @Test
-    public void xmlToLatexTest()
-            throws ParserConfigurationException, IOException, SAXException, TransformerException
-    {
-        pdfGenerator.xmlToLatex("test", "sk");
-        File file = new File("cvxml/test_cv.tex");
-        assertTrue(file.exists());
+//    @Test
+//    public void xmlToLatexTest()
+//            throws ParserConfigurationException, IOException, SAXException, TransformerException
+//    {
+//        pdfGenerator.xmlToLatex("test", "sk");
+//        File file = new File("cvxml/test_cv.tex");
+//        assertTrue(file.exists());
 //        file.delete();
 //
 //        pdfGenerator.xmlToLatex("test", "en");
 //        file = new File("cvxml/test_cv.tex");
 //        assertTrue(file.exists());
-    }
-
-//    @Test
-//    public void latexToPdfTest()
-//            throws IOException, InterruptedException
-//    {
-//        pdfGenerator.latexToPdf("test");
-//        File file = new File("cvxml/test_cv.pdf");
-//        assertTrue(file.exists());
 //    }
+
+
+    @Test
+    public void latexToPdfTest()
+            throws IOException, InterruptedException
+    {
+        File f = new File("cvxml/test_cv.tex");
+        if (f.exists()) {
+            pdfGenerator.latexToPdf("test");
+            File file = new File("cvxml/test_cv.pdf");
+            assertTrue(file.exists());
+        }
+    }
 }

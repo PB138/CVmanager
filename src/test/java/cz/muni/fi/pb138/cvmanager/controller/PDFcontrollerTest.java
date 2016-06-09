@@ -25,7 +25,7 @@ public class PDFcontrollerTest extends ControllerTestTemplate  {
 
     @Test
     public void downloadPDFTest() throws Exception {
-        mockMvc.perform(get("/auth/download?l=sk"))
+        mockMvc.perform(get("/auth/download?l=en"))
                 .andExpect(status().isOk());
     }
 }

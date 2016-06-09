@@ -22,9 +22,9 @@
 
 \textbf{datum narodenia:}
 \\*
-<xsl:value-of select="personalInformation/birthday"/>
+<xsl:value-of select="birthday"/>
 \\*
-<xsl:for-each select="personalInformation/contacts/contact">
+<xsl:for-each select="contacts/contact">
 	<xsl:value-of select="@id"/>: <xsl:value-of select="."/>
 	\\*
 </xsl:for-each>
@@ -32,7 +32,7 @@
 \Sep % Some whitespace
 
 \textbf{Adresa} \\
-<xsl:value-of select="personalInformation/address"/>
+<xsl:value-of select="address"/>
 \vfill % Whitespace under this block to push it up under the photo
 \end{flushright}
 }
@@ -49,7 +49,7 @@
 %	HEADING
 %----------------------------------------------------------------------------------------
 
-\cvheading{<xsl:value-of select="personalInformation/fullName"/>} % Large heading - your name
+\cvheading{<xsl:value-of select="fullName"/>} % Large heading - your name
 
 %----------------------------------------------------------------------------------------
 %	ABOUT ME

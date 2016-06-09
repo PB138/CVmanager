@@ -1,14 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <cv>
-	<personalInformation>
-		<fullName>Mgr. Tomas Gajda</fullName>
-		<address>Vinarska 5, Brno</address>
-		<birthday>1.1.1960</birthday>
-		<contacts>
-			<contact id="Tel">111 222 333</contact>
-			<contact id="Email">email@centrum.sk</contact>
-		</contacts>
-	</personalInformation>
+	<fullName>Mgr. Tomas Gajda</fullName>
+	<address>Vinarska 5, Brno</address>
+	<birthday>1.1.1960</birthday>
+	<contacts>
+		<contact id="Tel">111 222 333</contact>
+		<contact id="Email">email@centrum.sk</contact>
+	</contacts>
 	<personalProfile>
 		Volam sa Tomas a som student.
 	</personalProfile>
