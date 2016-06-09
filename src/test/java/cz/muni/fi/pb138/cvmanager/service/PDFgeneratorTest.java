@@ -45,6 +45,17 @@ public class PDFgeneratorTest {
         pdfGenerator.xmlToLatex("test", "sk");
         File file = new File("cvxml/test_cv.tex");
         assertTrue(file.exists());
-        file.delete();
+    }
+
+    @Test
+    public void latexToPdfTest()
+            throws IOException, InterruptedException
+    {
+        File f = new File("cvxml/test_cv.tex");
+        if (f.exists()) {
+            pdfGenerator.latexToPdf("test");
+            File file = new File("cvxml/test_cv.pdf");
+            assertTrue(file.exists());
+        }
     }
 }
