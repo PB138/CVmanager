@@ -1,7 +1,6 @@
 package cz.muni.fi.pb138.cvmanager.service;
 
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
-import cz.muni.fi.pb138.cvmanager.TestEntityFactory;
 import cz.muni.fi.pb138.cvmanager.entity.CurriculumVitae;
 import org.junit.Before;
 import org.junit.Test;

@@ -6,7 +6,6 @@ import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import cz.muni.fi.pb138.cvmanager.entity.CurriculumVitae;
 import cz.muni.fi.pb138.cvmanager.enumeration.CurriculumVitaeAttribute;
 import cz.muni.fi.pb138.cvmanager.enumeration.CurriculumVitaeElement;
-import cz.muni.fi.pb138.cvmanager.service.XmlService;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
