@@ -19,8 +19,6 @@ public class Account {
     @Column(nullable=false)
     private String password;
 
-    @Column(nullable=false)
-    private String salt;
 
     @Column(nullable=false, length=64)
     private String role;
@@ -33,13 +31,8 @@ public class Account {
     private String retypePassword;
 
 
-    public String getSalt() {
-        return salt;
-    }
 
-    public void setSalt(String salt) {
-        this.salt = salt;
-    }
+
 
 
 

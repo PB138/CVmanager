@@ -94,7 +94,7 @@ public class LoginController {
             return  model;
 
         }
-        if(accountService.findOne(username)!=null){
+        if(accountService.login(username)!=null){
             model.addObject("error"," Account with this name already exist!");
             model.setViewName("register");
             return  model;

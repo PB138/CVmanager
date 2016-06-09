@@ -1,6 +1,5 @@
 package cz.muni.fi.pb138.cvmanager.controller;
 
-import cz.muni.fi.pb138.cvmanager.entity.Account;
 import org.junit.Test;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -43,10 +42,11 @@ public class LoginControllerTest extends ControllerTestTemplate {
 
     @Test
     public void registerPostOkTest() throws Exception {
-        Account acc = new Account("kappa","kappa");
-        mockMvc.perform(post("/register")
-                    //.param("account",)
-                    )
+
+        mockMvc.perform(post("register")
+                    .param("username","as")
+                    .param("password","as")
+                    .param("retypePassword","as"))
                 .andExpect(status().isOk())
                 .andExpect(view().name("login"));
     }
