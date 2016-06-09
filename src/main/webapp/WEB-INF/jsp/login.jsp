@@ -20,7 +20,7 @@
             margin-top:30px;
         }
         .form-group.last {
-            margin-bottom:0px;
+            margin-bottom:0;
         }
     </style>
 
@@ -36,7 +36,7 @@
 
 
 <div class="container">
-    <div class="row" style="margin: 150px 0px">
+    <div class="row" style="margin: 150px 0">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
 
@@ -44,9 +44,9 @@
                     <div class="panel-heading"> <strong class="">LogOut</strong></div>
                     <div class="panel-body">
                         <div class="col-sm-offset-3 col-sm-9"><strong>${logout}</strong></div>
-                        <div class="col-sm-offset-3 col-sm-9" style=" color: red;margin-top: 50px;  margin-bottom: 50px">You will be redirected!</div>
+                        <div class="col-sm-offset-3 col-sm-9" style=" color: red;margin-top: 50px;  margin-bottom: 50px"><spring:message code="BeRedirected" /></div>
                     </div>
-                    <div class="panel-footer">Come back soon!</div>
+                    <div class="panel-footer"><spring:message code="ComeBack" /></div>
 
                     <%--redirect after 5sec--%>
                     <script>
@@ -64,13 +64,13 @@
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" name='loginForm' action="<spring:url value='j_spring_security_check' />" method='POST'>
                         <div class="form-group">
-                            <label for="inputUsername" class="col-sm-3 control-label">Username</label>
+                            <label for="inputUsername" class="col-sm-3 control-label"><spring:message code="Username" /></label>
                             <div class="col-sm-9">
                                 <input type='text' name='username' value='' class="form-control" id="inputUsername" placeholder="username" required="">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label for="inputPassword3" class="col-sm-3 control-label">Password</label>
+                            <label for="inputPassword3" class="col-sm-3 control-label"><spring:message code="Password" /></label>
                             <div class="col-sm-9">
                                 <input type='password' name='password' class="form-control" id="inputPassword3" placeholder="Password" required="">
                             </div>
@@ -79,20 +79,22 @@
                             <div class="col-sm-offset-3 col-sm-9">
                                 <div class="checkbox">
                                     <label class="">
-                                        <input type="checkbox" class="">Remember me</label>
+                                        <input type="checkbox" class=""><spring:message code="RememberMe" /></label>
                                 </div>
                             </div>
                         </div>
                         <div class="form-group last">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" class="btn btn-success btn-sm">Sign in</button>
+                                <button type="submit" class="btn btn-success btn-sm"><spring:message code="LogIn" /></button>
+                                <a  style="margin-left: 50px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/index"><span class="glyphicon glyphicon-log-in"></span> Back to main page </a>
                             </div>
                         </div>
+
                         <input type="hidden" name="${_csrf.parameterName}"
                                value="${_csrf.token}" />
                     </form>
                 </div>
-                <div class="panel-footer">Not Registered? <a href="${pageContext.request.contextPath}/register" class="">Register here</a>
+                <div class="panel-footer">Not Registered? <a href="${pageContext.request.contextPath}/register" class=""><spring:message code="RegisterHere" /></a>
                 </div>
                 </c:if>
             </div>

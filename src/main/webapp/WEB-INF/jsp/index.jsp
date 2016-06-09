@@ -37,10 +37,10 @@
                     <a href="#page-top"></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#application"><spring:message code="Application" /></a>
+                    <a class="page-scroll" href="#application"><span class="glyphicon glyphicon-tasks"></span>  <spring:message code="Application" /></a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#team"><spring:message code="Team" /></a>
+                    <a class="page-scroll" href="#team"><span class="glyphicon glyphicon-user"></span>  <spring:message code="Team" /></a>
                 </li>
 
                 <c:if test="${empty pageContext.request.userPrincipal}">
@@ -51,7 +51,7 @@
 
                 <c:if test="${not empty pageContext.request.userPrincipal}">
                     <li>
-                        <a class="redirect" href="${pageContext.request.contextPath}/logout"><spring:message code="LogOff" /></a>
+                        <a class="redirect" href="${pageContext.request.contextPath}/logout"><span class="glyphicon glyphicon-off"></span>  <spring:message code="LogOff" /></a>
                     </li>
                 </c:if>
 
@@ -112,10 +112,10 @@
             <div class="col-md-4">
                 <a href=""><span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
-                        <i class="fa fa-lock fa-stack-1x fa-inverse"></i>
+                        <i class="fa fa-download fa-stack-1x fa-inverse"></i>
                     </span></a>
-                <h4 class="service-heading">Here will be delete?</h4>
-                <p class="text-muted">Something something.....</p>
+                <h4 class="service-heading"><spring:message code="Download" /></h4>
+                <p class="text-muted"><spring:message code="DownloadText" /></p>
             </div>
         </div>
     </div>

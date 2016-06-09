@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%--
   Created by IntelliJ IDEA.
   User: zeman
@@ -15,7 +16,7 @@
 
     <style>
         body {
-            background: url('http://www.wallpaperno.com/thumbnails/detail/20130225/books%201920x1080%20wallpaper_www.wallpaperno.com_96.jpg') no-repeat center center fixed;
+            background: url('https://static.pexels.com/photos/1526/dark-blur-blurred-gradient.jpg') no-repeat center center fixed;
             -webkit-background-size: cover;
             -moz-background-size: cover;
             -o-background-size: cover;
@@ -27,7 +28,7 @@
             margin-top:30px;
         }
         .form-group.last {
-            margin-bottom:0px;
+            margin-bottom:0;
         }
     </style>
 
@@ -35,10 +36,10 @@
 <body>
 
 <div class="container">
-    <div class="row" style="margin: 150px 0px">
+    <div class="row" style="margin: 150px 0">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
-                <div class="panel-heading"> <strong class="">Register</strong>
+                <div class="panel-heading"> <strong class=""><spring:message code="Register" /></strong>
                     <c:if test="${not empty error}">
                         ${error}
                     </c:if>
@@ -46,7 +47,7 @@
                 <div class="panel-body">
                     <form:form class="form-horizontal" role="form" commandName="Account">
                         <div class="form-group">
-                            <label for="Username" class="col-sm-3 control-label">Username</label>
+                            <label for="Username" class="col-sm-3 control-label"><spring:message code="Username" /></label>
                             <div class="col-sm-9">
                                 <form:input path="username" type="username" class="form-control" id="Username" placeholder="Username" required="yes" />
                                 <form:errors path="username" />
@@ -54,7 +55,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-3 control-label">Password</label>
+                            <label class="col-sm-3 control-label"><spring:message code="Password" /></label>
                             <div class="col-sm-9">
                                 <form:password path="password" class="form-control" id="password" required="yes"/>
                                 <form:errors path="password" />
@@ -62,34 +63,27 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="retypePasswords" class="col-sm-3 control-label">Password</label>
+                            <label for="retypePasswords" class="col-sm-3 control-label"><spring:message code="PasswordAgain" /></label>
                             <div class="col-sm-9">
                                 <form:password path="retypePassword" class="form-control" id="retypePasswords" required="yes"/>
                                 <form:errors path="retypePassword" />
                             </div>
                         </div>
 
-
-                        <div class="form-group">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <div class="checkbox">
-                                    <label class="">
-                                        <input type="checkbox" class="">Remember me</label>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="form-group last">
                             <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" value="Register" class="btn btn-success btn-sm">Register</button>
+                                <button type="submit" value="Register" class="btn btn-success btn-sm"><spring:message code="Register" /></button>
+                                <a  style="margin-left: 50px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon glyphicon-user"></span> Back to login </a>
+
                             </div>
                         </div>
+
                     </form:form>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 
 
 </body>
