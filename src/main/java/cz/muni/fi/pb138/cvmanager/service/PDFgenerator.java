@@ -13,7 +13,6 @@ import java.nio.file.Paths;
 import java.nio.file.WatchService;
 import java.util.concurrent.TimeUnit;
 import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerConfigurationException;
 import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.stream.StreamResult;
@@ -51,7 +50,6 @@ public class PDFgenerator {
         DOMSource source = new DOMSource(xmlService.createDocument(xmlService.loadFromXml(username)));
         xsltProc.transform(source, new StreamResult(new File("cvxml/" + username + "_cv.tex")));
     }
-
 
 
     public InputStream latexToPdf(String username)
