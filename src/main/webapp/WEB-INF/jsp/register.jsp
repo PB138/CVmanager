@@ -69,6 +69,10 @@
                                 <form:errors path="retypePassword" />
                             </div>
                         </div>
+                        <input type="hidden"
+                               name="${_csrf.parameterName}"
+                               value="${_csrf.token}"/>
+
 
                         <div class="form-group last">
                             <div class="col-sm-offset-3 col-sm-9">
