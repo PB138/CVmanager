@@ -20,8 +20,10 @@
 \begin{flushright}
 \small % Smaller font size
 
-date of birth:
+\textbf{date of birth:}
+\\*
 <xsl:value-of select="personalInformation/birthday"/>
+\\*
 \\*
 <xsl:for-each select="personalInformation/contacts/contact">
 	<xsl:value-of select="@id"/>: <xsl:value-of select="."/>

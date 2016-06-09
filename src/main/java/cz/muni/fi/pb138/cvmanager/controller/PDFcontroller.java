@@ -14,6 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 /**
@@ -41,11 +42,11 @@ public class PDFcontroller extends BaseController {
 //    }
 
     @RequestMapping(value = "/auth/download", method = RequestMethod.GET)
-    public void downloadPDF(/*@RequestParam("language") String lang,*/ HttpServletResponse response)
+    public void downloadPDF(@RequestParam("l") String lang, HttpServletResponse response)
     {
         try {
             //uncomment the calling of method when login finished
-            pdfGenerator.xmlToLatex(getPrincipalUsername(), /*lang*/ "sk");
+            pdfGenerator.xmlToLatex(getPrincipalUsername(), lang);
             InputStream pdf = pdfGenerator.latexToPdf(getPrincipalUsername());
 
             response.setContentType("application/pdf");
