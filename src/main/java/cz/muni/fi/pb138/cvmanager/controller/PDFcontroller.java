@@ -26,20 +26,7 @@ public class PDFcontroller extends BaseController {
     
      @Autowired
     private PDFgenerator pdfGenerator;
-    
-    // Don't know if enough to take language from lang parameter or need to take it or set to Local in MessageSource
-    //@Autowired
-    //private MessageSource messageSource;
-    
-//    @RequestMapping(value = "/auth/download", method = RequestMethod.GET)
-//    public ByteArrayOutputStream downloadPDF(@RequestParam("language") String lang)
-//            throws TransformerException, ParserConfigurationException, IOException, SAXException
-//    {
-//        //uncomment the calling of method when login finished
-//        pdfGenerator.xmlToLatex(/*getPrincipalUsername()*/ "username", lang);
-//        ByteArrayOutputStream pdf = pdfGenerator.latexToPdf();
-//        return pdf;
-//    }
+
 
     @RequestMapping(value = "/auth/download", method = RequestMethod.GET)
     public void downloadPDF(@RequestParam("l") String lang, HttpServletResponse response)

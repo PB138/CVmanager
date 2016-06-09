@@ -23,16 +23,4 @@ public class BaseController {
         return userDetails.getUsername();
     }
 
-//    protected String getPrincipalUsername() {
-//        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
-//        UserDetails userDetails = null;
-//        if (auth != null) {
-//            userDetails = (UserDetails) auth.getPrincipal();
-//        }
-//        if(userDetails == null){
-//            return null;
-//        } else {
-//            return userDetails.getUsername();
-//        }
-//    }
 }
