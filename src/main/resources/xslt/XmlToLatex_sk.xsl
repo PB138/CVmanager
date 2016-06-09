@@ -20,7 +20,7 @@
 \begin{flushright}
 \small % Smaller font size
 
-datum narození:
+datum narodenia:
 <xsl:value-of select="personalInformation/birthday"/>
 \\*
 <xsl:for-each select="personalInformation/contacts/contact">
@@ -54,13 +54,13 @@ datum narození:
 %	ABOUT ME
 %----------------------------------------------------------------------------------------
 
-\aboutme{About Me}{<xsl:value-of select="personalProfile"/>}
+\aboutme{O mňa}{<xsl:value-of select="personalProfile"/>}
 
 %----------------------------------------------------------------------------------------
 %	EXPERIENCE
 %----------------------------------------------------------------------------------------
 
-\CVSection{Experience}
+\CVSection{Skúsenosti}
 
 <xsl:for-each select="workExperience/workItem">
 \CVItem{<xsl:value-of select="@from"/> - <xsl:value-of select="@to"/>, <xsl:value-of select="@company"/>, <xsl:value-of select="@position"/>}{<xsl:value-of select="."/>}
@@ -72,7 +72,7 @@ datum narození:
 %	EDUCATION
 %----------------------------------------------------------------------------------------
 
-\CVSection{Education}
+\CVSection{Vzdelanie}
 
 <xsl:for-each select="educations/educationItem">
 \CVItem{<xsl:value-of select="@from"/> - <xsl:value-of select="@to"/>, <xsl:value-of select="@school"/>}{<xsl:value-of select="."/>}
@@ -84,7 +84,7 @@ datum narození:
 %	ACHIEVEMENT
 %----------------------------------------------------------------------------------------
 
-\CVSection{Achievement}
+\CVSection{Úspechy}
 
 <xsl:for-each select="achievements/achievementItem">
 \CVItem{<xsl:value-of select="@year"/>, <xsl:value-of select="@title"/>}{<xsl:value-of select="."/>}
@@ -97,7 +97,7 @@ datum narození:
 %	COMMUNICATION SKILLS
 %----------------------------------------------------------------------------------------
 
-\CVSection{Communication Skills}
+\CVSection{Komunikačné schopnosti}
 
 <xsl:for-each select="languages/languageItem">
 \CVItem{<xsl:value-of select="@lang"/> - \small <xsl:value-of select="@level"/>}
@@ -109,7 +109,7 @@ datum narození:
 %	SKILLS
 %----------------------------------------------------------------------------------------
 
-\CVSection{Personal and Professional Skills}
+\CVSection{Osobné a profesijné schopnosti}
 
 <xsl:for-each select="skills/skillItem">
 \CVItem{<xsl:value-of select="@title"/>}{<xsl:value-of select="."/>}
@@ -130,7 +130,7 @@ datum narození:
 %	HOBBIES
 %----------------------------------------------------------------------------------------
 
-\CVSection{Interests}
+\CVSection{Záľuby}
 
 <xsl:for-each select="hobbies/hobbyItem">
 \CVItem{<xsl:value-of select="@title"/>}{<xsl:value-of select="."/>}
