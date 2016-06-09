@@ -47,6 +47,10 @@ Language:
             <span class="glyphicon glyphicon-log-out"></span> Log out
         </button>
     </a>
+    <a  style="margin-left: 10px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/index">
+        <span class="glyphicon glyphicon-log-in"></span> Back to main page </a>
+
 </div>
+
 </body>
 </html>

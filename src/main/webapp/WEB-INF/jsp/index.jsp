@@ -111,7 +111,7 @@
             </div>
             <div class="col-md-4">
                 <!-- response.locale is recognition of users language  -->
-                <a href="${pageContext.request.contextPath}/auth/download?l=${pageContext.response.locale}"><span class="fa-stack fa-4x">
+                <a href="${pageContext.request.contextPath}/auth/download?l=${pageContext.response.locale}" target="_blank"><span class="fa-stack fa-4x">
                         <i class="fa fa-circle fa-stack-2x text-primary"></i>
                         <i class="fa fa-download fa-stack-1x fa-inverse"></i>
                     </span></a>

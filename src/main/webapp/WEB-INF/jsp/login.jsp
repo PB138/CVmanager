@@ -86,7 +86,7 @@
                         <div class="form-group last">
                             <div class="col-sm-offset-3 col-sm-9">
                                 <button type="submit" class="btn btn-success btn-sm"><spring:message code="LogIn" /></button>
-                                <a  style="margin-left: 50px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/index"><span class="glyphicon glyphicon-log-in"></span> Back to main page </a>
+                                <a  style="margin-top: 10px; margin-left: 0px; margin-right: 10px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/index"><span class="glyphicon glyphicon-log-in"></span> Back to main page </a>
                             </div>
                         </div>
 
