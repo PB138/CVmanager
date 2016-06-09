@@ -58,9 +58,15 @@ public class CurriculumVitaeController extends BaseController {
 
 
     @RequestMapping(value = {"/", "/index"}, method = RequestMethod.GET)
-    public ModelAndView main() {
+    public ModelAndView index() {
         ModelAndView model = new ModelAndView();
         model.setViewName("index");
         return model;
+    }
+
+    private String getPrincipalUsername() {
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) auth.getPrincipal();
+        return userDetails.getUsername();
     }
 }

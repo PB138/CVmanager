@@ -4,6 +4,8 @@ import com.tngtech.java.junit.dataprovider.DataProvider;
 import com.tngtech.java.junit.dataprovider.DataProviderRunner;
 import com.tngtech.java.junit.dataprovider.UseDataProvider;
 import cz.muni.fi.pb138.cvmanager.entity.CurriculumVitae;
+import cz.muni.fi.pb138.cvmanager.enumeration.CurriculumVitaeAttribute;
+import cz.muni.fi.pb138.cvmanager.enumeration.CurriculumVitaeElement;
 import cz.muni.fi.pb138.cvmanager.service.XmlService;
 import org.junit.Assert;
 import org.junit.Before;
@@ -72,29 +74,40 @@ public class XmlServiceTest {
     @DataProvider
     public static Object[][] curriculumVitaeData() {
         return new Object[][] {
-                {TestEntityFactory.createCurriculumVitae()},
-                {TestEntityFactory.createCurriculumVitaeOnlyPersonalInformation()},
-                {TestEntityFactory.createCurriculumVitaeWithAchievements()},
-                {TestEntityFactory.createCurriculumVitaeWithContact()},
-                {TestEntityFactory.createCurriculumVitaeWithEducation()},
-                {TestEntityFactory.createCurriculumVitaeWithHobbies()},
-                {TestEntityFactory.createCurriculumVitaeWithLanguages()},
-                {TestEntityFactory.createCurriculumVitaeWithSkills()},
-                {TestEntityFactory.createCurriculumVitaeWithWork()}
+                {TestEntityFactory.createCurriculumVitae(),
+                        CurriculumVitaeElement.PERSONAL_INFORMATION},
+                {TestEntityFactory.createCurriculumVitaeOnlyPersonalInformation(),
+                        CurriculumVitaeElement.PERSONAL_INFORMATION},
+                {TestEntityFactory.createCurriculumVitaeWithAchievements(),
+                        CurriculumVitaeElement.ACHIEVEMENT_ITEM},
+                {TestEntityFactory.createCurriculumVitaeWithContact(),
+                        CurriculumVitaeElement.CONTACT},
+                {TestEntityFactory.createCurriculumVitaeWithEducation(),
+                        CurriculumVitaeElement.EDUCATION_ITEM},
+                {TestEntityFactory.createCurriculumVitaeWithHobbies(),
+                        CurriculumVitaeElement.HOBBY_ITEM},
+                {TestEntityFactory.createCurriculumVitaeWithLanguages(),
+                        CurriculumVitaeElement.LANGUAGE_ITEM},
+                {TestEntityFactory.createCurriculumVitaeWithSkills(),
+                        CurriculumVitaeElement.SKILL_ITEM},
+                {TestEntityFactory.createCurriculumVitaeWithWork(),
+                        CurriculumVitaeElement.WORK_ITEM}
         };
     }
 
     @Test
     @UseDataProvider("curriculumVitaeData")
-    public void createDocumentTest(CurriculumVitae cv)
+    public void createDocumentTest(CurriculumVitae cv, CurriculumVitaeElement element)
             throws ParserConfigurationException {;
         Document document = xmlService.createDocument(cv);
         Assert.assertNotEquals("Dom document is null", null, document);
+        Assert.assertNotEquals("Element is null: " + element.toString(), "",
+                    document.getElementsByTagName(element.toString()));
     }
 
     @Test
     @UseDataProvider("curriculumVitaeData")
-    public void serializeToXmlTest(CurriculumVitae cv)
+    public void serializeToXmlTest(CurriculumVitae cv, CurriculumVitaeElement element)
             throws IOException, TransformerException, ParserConfigurationException, SAXException {
         xmlService.serializeToXml("TestUsername", cv);
         File testFile = new File("cvxml/TestUsername_cv.xml");
@@ -102,6 +115,37 @@ public class XmlServiceTest {
         DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
         dBuilder.parse(testFile);
         testFile.delete();
+    }
+
+    @DataProvider
+    public static Object[][] curriculumVitaeAttributeData() {
+        return new Object[][] {
+                {CurriculumVitaeElement.CONTACT, CurriculumVitaeAttribute.ID},
+                {CurriculumVitaeElement.WORK_ITEM, CurriculumVitaeAttribute.FROM},
+                {CurriculumVitaeElement.WORK_ITEM, CurriculumVitaeAttribute.TO},
+                {CurriculumVitaeElement.WORK_ITEM, CurriculumVitaeAttribute.COMPANY},
+                {CurriculumVitaeElement.WORK_ITEM, CurriculumVitaeAttribute.POSITION},
+                {CurriculumVitaeElement.EDUCATION_ITEM, CurriculumVitaeAttribute.FROM},
+                {CurriculumVitaeElement.EDUCATION_ITEM, CurriculumVitaeAttribute.TO},
+                {CurriculumVitaeElement.EDUCATION_ITEM, CurriculumVitaeAttribute.SCHOOL},
+                {CurriculumVitaeElement.ACHIEVEMENT_ITEM, CurriculumVitaeAttribute.YEAR},
+                {CurriculumVitaeElement.ACHIEVEMENT_ITEM, CurriculumVitaeAttribute.TITLE},
+                {CurriculumVitaeElement.LANGUAGE_ITEM, CurriculumVitaeAttribute.LANGUAGE},
+                {CurriculumVitaeElement.LANGUAGE_ITEM, CurriculumVitaeAttribute.LEVEL},
+                {CurriculumVitaeElement.SKILL_ITEM, CurriculumVitaeAttribute.TITLE}
+        };
+    }
+
+    @Test
+    @UseDataProvider("curriculumVitaeAttributeData")
+    public void createDocumentAttributesTest(CurriculumVitaeElement element,
+                                             CurriculumVitaeAttribute attribute)
+            throws ParserConfigurationException {;
+        Document document = xmlService.createDocument(TestEntityFactory.createCurriculumVitae());
+        Assert.assertNotEquals("Dom document is null", null, document);
+        Assert.assertNotEquals("Attribute is null: " + attribute.toString(), "",
+                document.getElementsByTagName(element.toString()).item(0)
+                        .getAttributes().getNamedItem(attribute.toString()));
     }
 
 }
