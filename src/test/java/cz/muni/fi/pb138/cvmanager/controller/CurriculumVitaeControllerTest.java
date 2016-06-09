@@ -2,6 +2,7 @@ package cz.muni.fi.pb138.cvmanager.controller;
 
 import cz.muni.fi.pb138.cvmanager.entity.CurriculumVitae;
 import cz.muni.fi.pb138.cvmanager.service.XmlService;
+
 import org.junit.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
