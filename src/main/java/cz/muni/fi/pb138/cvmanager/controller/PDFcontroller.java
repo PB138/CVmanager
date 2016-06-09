@@ -7,6 +7,7 @@ package cz.muni.fi.pb138.cvmanager.controller;
 
 import cz.muni.fi.pb138.cvmanager.service.PDFgenerator;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -53,6 +54,14 @@ public class PDFcontroller extends BaseController {
         }
         catch(Exception ex){
             System.out.print(ex.toString());
+            try {
+                PrintWriter out = response.getWriter();
+                out.println("Sorry, generating of CV to PDF failed");
+                out.close();
+            }
+            catch(Exception e){
+                System.out.print("not able to print on web site");
+            }
         }
     }
 

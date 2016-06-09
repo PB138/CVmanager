@@ -20,13 +20,12 @@
 \begin{flushright}
 \small % Smaller font size
 
-<xsl:value-of select="personalInformation/fullName"/>
-
 date of birth:
 <xsl:value-of select="personalInformation/birthday"/>
-
+\\*
 <xsl:for-each select="personalInformation/contacts/contact">
 	<xsl:value-of select="@id"/>: <xsl:value-of select="."/>
+	\\*
 </xsl:for-each>
 
 \Sep % Some whitespace

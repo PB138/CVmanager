@@ -67,8 +67,8 @@ public class PDFgenerator {
         dir.register(watcher, ENTRY_CREATE, ENTRY_MODIFY);
 
         while(true) {
-            // wait for a key to be available for 1000 milisec
-            WatchKey key = watcher.poll(1000L, TimeUnit.MILLISECONDS);
+            // wait for a key to be available for 10 seconds
+            WatchKey key = watcher.poll(10000L, TimeUnit.MILLISECONDS);
             if(key == null){
                 break;
             }
@@ -93,10 +93,6 @@ public class PDFgenerator {
 
         System.out.println("end of cycle");
 
-        //dodělání tlačítka pro download do jsp
-//        <button type = "button" class = "btn btn-default btn-lg ">
-//            Default Button
-//            </button>
 
         File pdf = new File("cvxml/" + username + "_cv.pdf");
 
