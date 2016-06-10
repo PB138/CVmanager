@@ -40,11 +40,12 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
                 <div class="panel-heading"> <strong class=""><spring:message code="Register" /></strong>
-                    <c:if test="${not empty error}">
-                        ${error}
-                    </c:if>
+
                 </div>
                 <div class="panel-body">
+                    <c:if test="${not empty error}">
+                        <div style="color:darkred"><strong><spring:message code="${error}" /></strong></div>
+                    </c:if>
                     <form:form class="form-horizontal" role="form" commandName="Account">
                         <div class="form-group">
                             <label for="Username" class="col-sm-3 control-label"><spring:message code="Username" /></label>
