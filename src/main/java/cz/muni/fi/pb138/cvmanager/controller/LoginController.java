@@ -72,36 +72,36 @@ public class LoginController extends BaseController {
 
         ModelAndView model = new ModelAndView();
         if (account.getUsername() == null || account.getUsername().equals("")) {
-            model.addObject("error"," Username is empty!");
+            model.addObject("error","UsernameEmpty");
             model.setViewName("register");
             return  model;
         }
         if (account.getPassword() == null || account.getPassword().equals("")) {
-            model.addObject("error"," Password is empty!");
+            model.addObject("error","PasswordEmpty");
             model.setViewName("register");
             return  model;
         }
         if (account.getRetypePassword() == null || account.getRetypePassword().equals("")) {
-            model.addObject("error"," RetypePassword is empty!");
+            model.addObject("error","RetypePasswordEmpty");
             model.setViewName("register");
             return  model;
         }
 
         if (!account.getPassword().equals(account.getRetypePassword())) {
-            model.addObject("error"," Passwords don't match!");
+            model.addObject("error","PasswordMatchError");
             model.setViewName("register");
             return  model;
 
         }
         if (accountService.login(account.getUsername()) != null) {
-            model.addObject("error"," Account with this name already exist!");
+            model.addObject("error","SameAccount");
             model.setViewName("register");
             return  model;
 
         }
 
         accountService.register(account);
-        model.addObject("success"," Account created successfully!");
+        model.addObject("success","AccountSuccess");
         model.setViewName("login");
         return model;
 
