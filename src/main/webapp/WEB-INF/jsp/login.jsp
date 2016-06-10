@@ -44,7 +44,7 @@
                 <%--iff error occured--%>
                 <c:if test="${not empty error}">
                     <div class="error-red">
-                        <strong ><spring:message code="ErrorLogIn"/><strong>
+                        <strong ><spring:message code="ErrorLogIn"/></strong>
                     </div>
                 </c:if>
                     <c:if test="${not empty logout}">
