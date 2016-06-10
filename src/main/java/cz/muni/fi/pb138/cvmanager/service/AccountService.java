@@ -38,4 +38,9 @@ public class AccountService {
     public Iterable<Account> findAll() {
         return accountDao.findAll();
     }
+
+
+    public void removeUser(String username) {
+        accountDao.delete(username);
+    }
 }
