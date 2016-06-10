@@ -68,40 +68,39 @@ public class LoginController {
 
 
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
-    public ModelAndView registerPost(@RequestParam("username") String username
-                                    ,@RequestParam("password") String password
-                                    ,@RequestParam("retypePassword") String retypePassword){
+    public ModelAndView registerPost(@ModelAttribute("account") Account account) {
+
         ModelAndView model = new ModelAndView();
-        if(username == null || username.equals("")){
+        if (account.getUsername() == null || account.getUsername().equals("")) {
             model.addObject("error"," Username is empty!");
             model.setViewName("register");
             return  model;
         }
-        if(password == null || password.equals("")){
+        if (account.getPassword() == null || account.getPassword().equals("")) {
             model.addObject("error"," Password is empty!");
             model.setViewName("register");
             return  model;
         }
-        if(retypePassword == null || retypePassword.equals("")){
+        if (account.getRetypePassword() == null || account.getRetypePassword().equals("")) {
             model.addObject("error"," RetypePassword is empty!");
             model.setViewName("register");
             return  model;
         }
 
-        if(!password.equals(retypePassword)) {
+        if (!account.getPassword().equals(account.getRetypePassword())) {
             model.addObject("error"," Passwords don't match!");
             model.setViewName("register");
             return  model;
 
         }
-        if(accountService.login(username)!=null){
+        if (accountService.login(account.getUsername()) != null) {
             model.addObject("error"," Account with this name already exist!");
             model.setViewName("register");
             return  model;
 
         }
 
-        accountService.register(new Account(username,password));
+        accountService.register(account);
         model.addObject("success"," Account created successfully!");
         model.setViewName("login");
         return model;
