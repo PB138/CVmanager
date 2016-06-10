@@ -57,7 +57,7 @@
                         <div class="form-group">
                             <label class="col-sm-3 control-label"><spring:message code="Password" /></label>
                             <div class="col-sm-9">
-                                <form:password path="password" class="form-control" id="password" required="yes"/>
+                                <form:password path="password" class="form-control" id="password"  placeholder="Password" required="yes"/>
                                 <form:errors path="password" />
                             </div>
                         </div>
@@ -65,7 +65,7 @@
                         <div class="form-group">
                             <label for="retypePasswords" class="col-sm-3 control-label"><spring:message code="PasswordAgain" /></label>
                             <div class="col-sm-9">
-                                <form:password path="retypePassword" class="form-control" id="retypePasswords" required="yes"/>
+                                <form:password path="retypePassword" class="form-control" id="retypePasswords"  placeholder="Retype password" required="yes"/>
                                 <form:errors path="retypePassword" />
                             </div>
                         </div>

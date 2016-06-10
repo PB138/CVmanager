@@ -13,6 +13,7 @@
             -moz-background-size: cover;
             -o-background-size: cover;
             background-size: cover;
+            color: black
         }
 
         .panel-default {
@@ -22,26 +23,32 @@
         .form-group.last {
             margin-bottom:0;
         }
+        .error-red{color: darkred}
+        .success-green{color:green}
+
     </style>
 
 </head>
 <body onload='document.loginForm.username.focus();'>
 
-<c:if test="${not empty success}" >
-    <div> ${success}</div>
-</c:if>
-<c:if test="${not empty error}">
-    ${error}
-</c:if>
-
-
 <div class="container">
     <div class="row" style="margin: 150px 0">
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">
-
-                <c:if test="${not empty logout}">
-                    <div class="panel-heading"> <strong class="">LogOut</strong></div>
+                <%--if registered cuccesfully--%>
+                <c:if test="${not empty success}" >
+                    <div class="success-green">
+                        <strong><spring:message code="RegisteredSuccess"/></strong>
+                    </div>
+                </c:if>
+                <%--iff error occured--%>
+                <c:if test="${not empty error}">
+                    <div class="error-red">
+                        <strong ><spring:message code="ErrorLogIn"/><strong>
+                    </div>
+                </c:if>
+                    <c:if test="${not empty logout}">
+                    <div class="panel-heading"> <strong>LogOut</strong></div>
                     <div class="panel-body">
                         <div class="col-sm-offset-3 col-sm-9"><strong>${logout}</strong></div>
                         <div class="col-sm-offset-3 col-sm-9" style=" color: red;margin-top: 50px;  margin-bottom: 50px"><spring:message code="BeRedirected" /></div>
@@ -52,14 +59,14 @@
                     <script>
                         var timer = setTimeout(function() {
                             window.location='/cvmanager/index'
-                        }, 3000);
+                        }, 2000);
                     </script>
 
 
                 </c:if>
-                <%--nieje to logout screen--%>
-                <c:if test="${empty logout}">
-                <div class="panel-heading"> <strong class="">Login</strong>
+                    <%--nieje to logout screen--%>
+                    <c:if test="${empty logout}">
+                <div class="panel-heading"> <strong class="color-normal">Login</strong>
                 </div>
                 <div class="panel-body">
                     <form class="form-horizontal" role="form" name='loginForm' action="<spring:url value='j_spring_security_check' />" method='POST'>
@@ -86,7 +93,7 @@
                         <div class="form-group last">
                             <div class="col-sm-offset-3 col-sm-9">
                                 <button type="submit" class="btn btn-success btn-sm"><spring:message code="LogIn" /></button>
-                                <a  style="margin-top: 10px; margin-left: 0px; margin-right: 10px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/index"><span class="glyphicon glyphicon-log-in"></span> Back to main page </a>
+                                <a  style="margin-left: 50px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/index"><span class="glyphicon glyphicon-log-in"></span> Back to index</a>
                             </div>
                         </div>
 
