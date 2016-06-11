@@ -173,10 +173,10 @@
 
 
             <div class="row" style="margin-left: 30px">
-                <div class="col-md-2" >
+                <div class="col-md-2">
                     <button type="button" class="btn-lg btn-default">
                         <a href="<c:url value='/auth/update'/>">
-                        <span class="glyphicon glyphicon-pencil"></span>Edit info
+                            <span class="glyphicon glyphicon-pencil"></span>Edit info
                         </a>
                     </button>
                 </div>
