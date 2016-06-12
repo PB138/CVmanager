@@ -76,11 +76,19 @@
 
 
                         <div class="form-group last">
-                            <div class="col-sm-offset-3 col-sm-9">
-                                <button type="submit" value="Register" class="btn btn-success btn-sm"><spring:message code="Register" /></button>
-                                <a  style="margin-left: 50px" class="btn btn-default btn-sm" href="${pageContext.request.contextPath}/login"><span class="glyphicon glyphicon glyphicon-user"></span> Back to login </a>
 
-                            </div>
+                            <div class="col-sm-offset-3 col-sm-10">
+
+                                <button type="submit" class="btn btn-success btn-sm"><spring:message code="Register" /></button>
+
+                                <a  class="btn btn-default btn-sm" style=""
+                                    href="${pageContext.request.contextPath}/login">
+                                    <span class="glyphicon glyphicon-user"></span> Back to login
+                                </a>
+
+
+
+
                         </div>
 
                     </form:form>
