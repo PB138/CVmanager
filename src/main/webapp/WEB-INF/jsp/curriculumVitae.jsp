@@ -79,15 +79,10 @@
 
                         <c:forEach items="${cv.workExperience}" var="item">
                             <a>
-                                <h4 class="list-group-item-heading"><c:out value="${item.company}"/> - <c:out
+                                <h4 class="list-group-item-heading" style="color: black"><c:out value="${item.company}"/> - <c:out
                                         value="${item.position}"/></h4>
-                                <p class="list-group-item-text">
-                                    <c:out value="${item.from}"/> - <c:out value="${item.to}"/>
-                                </p>
                                 <ul>
-                                    <li>
-                                        <c:out value="${item.value}"/>
-                                    </li>
+                                    <li><c:out value="${item.value}"/> (<c:out value="${item.from}"/> - <c:out value="${item.to}"/>)</li>
                                 </ul>
 
                             </a>
@@ -126,7 +121,7 @@
 
                         <c:forEach items="${cv.achievements}" var="item">
 
-                            <h4 class="list-group-item-heading"><c:out value="${item.year}"/> - <c:out
+                            <h4 class="list-group-item-heading" style="color: black"><c:out value="${item.year}"/> - <c:out
                                     value="${item.title}"/></h4>
                             <ul>
                                 <li>
@@ -175,8 +170,8 @@
             <div class="row" style="margin-left: 30px">
                 <div class="col-md-2">
                     <button type="button" class="btn-lg btn-default">
-                        <a href="<c:url value='/auth/update'/>">
-                            <span class="glyphicon glyphicon-pencil"></span>Edit info
+                        <a href="${pageContext.request.contextPath}/auth/update">
+                            <span class="glyphicon glyphicon-pncil"></span>Edit info
                         </a>
                     </button>
                 </div>
@@ -185,7 +180,7 @@
                     <div class="col-md-6 col-md-offset-6">
                         <form action="${pageContext.request.contextPath}/auth/download" method="get" target="_blank">
                             <div class="col-md-4">
-                                <select class="form-control" name="l" id="action">
+                                <select class="form-control" name="l" id="action" title="">
                                     <option value="en">en</option>
                                     <option value="sk">sk</option>
                                 </select>
@@ -212,9 +207,9 @@
 
 <!-- SCRIPTS -->
 <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" property="">
+<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" property="">
 <style>
-    /* uses font awesome for social icons */
-    @import url(http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css);
+
 
     body {
         padding-bottom: 50px;
@@ -229,11 +224,10 @@
         -moz-border-left-colors: none;
         -moz-border-right-colors: none;
         -moz-border-top-colors: none;
-        border-color: #eee;
         border-image: none;
         border-radius: 3px;
-        border-style: solid;
-        border-width: 1px 1px 1px 5px;
+        border: 1px solid #eee;
+        border-left-width: 5px;
         margin-bottom: 5px;
         padding: 20px;
     }
