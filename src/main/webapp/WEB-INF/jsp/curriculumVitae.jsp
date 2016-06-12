@@ -169,11 +169,11 @@
 
             <div class="row" style="margin-left: 30px">
                 <div class="col-md-2">
-                    <button type="button" class="btn-lg btn-default">
-                        <a href="${pageContext.request.contextPath}/auth/update">
-                            <span class="glyphicon glyphicon-pncil"></span>Edit info
-                        </a>
-                    </button>
+                    <a href="${pageContext.request.contextPath}/auth/update">
+                        <button type="button" class="btn-lg btn-default">
+                            <span class="glyphicon glyphicon-pncil">Edit CV</span>
+                        </button>
+                    </a>
                 </div>
 
                 <div class="col-md-10">
