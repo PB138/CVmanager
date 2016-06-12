@@ -171,7 +171,7 @@
                 <div class="col-md-2">
                     <a href="${pageContext.request.contextPath}/auth/update">
                         <button type="button" class="btn-lg btn-default">
-                            <span class="glyphicon glyphicon-pncil">Edit CV</span>
+                            <span class="glyphicon glyphicon-pencil"></span> Edit CV
                         </button>
                     </a>
                 </div>
