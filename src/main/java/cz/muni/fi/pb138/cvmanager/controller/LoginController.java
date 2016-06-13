@@ -24,12 +24,24 @@ public class LoginController extends BaseController {
     private AccountService accountService;
 
 
+    /**
+     * Http GET request for "/users" request
+     *
+     * @param model model that contains all users
+     * @return jsp view with name "users"
+     */
     @RequestMapping(value = "/users",method = RequestMethod.GET)
     public String allUsers(Model model){
         model.addAttribute("users",accountService.findAll());
         return "users";
     }
 
+    /**
+     * Http GET request for "/login" request
+     * @param error contains error message after authentication went wrong
+     * @param logout message after logout
+     * @return ModelAndView with jsp view with name "login" and model with possible error parameter and logout parameter
+     */
     @RequestMapping(value={"/login" }, method = RequestMethod.GET)
     public ModelAndView login(@RequestParam(value = "error", required = false) String error,
                               @RequestParam(value = "logout", required = false) String logout) {
@@ -46,11 +58,22 @@ public class LoginController extends BaseController {
         return model;
     }
 
+    /**
+     * Http GET request for "/register" request
+     * @return jsp view with name "register"
+     */
     @RequestMapping(value = "/register" , method = RequestMethod.GET)
     public String register(){
         return "register";
     }
 
+    /**
+     * Http GET request for "/logout" request
+     * and signs out the current user with spring security
+     * @param request HttpServlet request
+     * @param response HttpServlet response
+     * @return jsp view with name "login" and parameter logout
+     */
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
@@ -61,12 +84,25 @@ public class LoginController extends BaseController {
     }
 
 
+    /**
+     * Constructs new Account Object used in spring security login post request
+     * @return new Account Object
+     */
     @ModelAttribute("Account")
     public Account construct(){
         return new Account();
     }
 
 
+    /**
+     * Registers new User with given information in account object
+     * Checks if username is taken
+     * Checks if password and username are correct
+     * @param account with information about user
+     * @return ModelAndView with view if everything during registration went all right then jsp view name "login"
+     * else "register
+     * it adds parameters to model with messages
+     */
     @RequestMapping(value = "/register" , method = RequestMethod.POST)
     public ModelAndView registerPost(@ModelAttribute("account") Account account) {
 
@@ -104,9 +140,6 @@ public class LoginController extends BaseController {
         model.addObject("success","AccountSuccess");
         model.setViewName("login");
         return model;
-
-
-
 
     }
 }
