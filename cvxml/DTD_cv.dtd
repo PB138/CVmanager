@@ -1,0 +1,33 @@
+<!ELEMENT cv (fullName, address, birthday, contacts, personalProfile, workExperience, educations, achievements, languages, skills, hobbies)>
+<!ELEMENT fullName (#PCDATA)>
+<!ELEMENT address (#PCDATA)>
+<!ELEMENT birthday (#PCDATA)>
+<!ELEMENT contacts (contact*)>
+	<!ELEMENT contact (#PCDATA)>
+	<!ATTLIST contact id CDATA #REQUIRED>
+<!ELEMENT personalProfile (#PCDATA)>
+<!ELEMENT workExperience (workItem*)>
+	<!ELEMENT workItem (#PCDATA)>
+	<!ATTLIST workItem from CDATA #REQUIRED>
+	<!ATTLIST workItem to CDATA #REQUIRED>
+	<!ATTLIST workItem company CDATA #REQUIRED>
+	<!ATTLIST workItem position CDATA #REQUIRED>
+<!ELEMENT educations (educationItem*)>
+	<!ELEMENT educationItem (#PCDATA)>
+	<!ATTLIST educationItem from CDATA #REQUIRED>
+	<!ATTLIST educationItem to CDATA #REQUIRED>
+	<!ATTLIST educationItem school CDATA #REQUIRED>
+<!ELEMENT achievements (achievementItem*)>
+	<!ELEMENT achievementItem (#PCDATA)>
+	<!ATTLIST achievementItem year CDATA #REQUIRED>
+	<!ATTLIST achievementItem title CDATA #REQUIRED>
+<!ELEMENT languages (languageItem*)>
+	<!ELEMENT languageItem EMPTY>
+	<!ATTLIST languageItem lang CDATA #REQUIRED>
+	<!ATTLIST languageItem level CDATA #REQUIRED>
+<!ELEMENT skills (skillItem*)>
+	<!ELEMENT skillItem (#PCDATA)>
+	<!ATTLIST skillItem title CDATA #REQUIRED>
+<!ELEMENT hobbies (hobbyItem*)>
+	<!ELEMENT hobbyItem (#PCDATA)>
+	<!ATTLIST hobbyItem title CDATA #REQUIRED>
