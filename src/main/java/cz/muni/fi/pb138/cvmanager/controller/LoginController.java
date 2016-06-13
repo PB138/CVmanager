@@ -25,7 +25,7 @@ public class LoginController extends BaseController {
 
 
     /**
-     * Http GET request for "/users" request
+     * Http Get request for "/users"
      *
      * @param model model that contains all users
      * @return jsp view with name "users"
@@ -37,7 +37,7 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * Http GET request for "/login" request
+     * Http Get request for "/login"
      * @param error contains error message after authentication went wrong
      * @param logout message after logout
      * @return ModelAndView with jsp view with name "login" and model with possible error parameter and logout parameter
@@ -59,7 +59,7 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * Http GET request for "/register" request
+     * Http Get request for "/register"
      * @return jsp view with name "register"
      */
     @RequestMapping(value = "/register" , method = RequestMethod.GET)
@@ -68,7 +68,7 @@ public class LoginController extends BaseController {
     }
 
     /**
-     * Http GET request for "/logout" request
+     * Http Get request for "/logout"
      * and signs out the current user with spring security
      * @param request HttpServlet request
      * @param response HttpServlet response
@@ -95,6 +95,7 @@ public class LoginController extends BaseController {
 
 
     /**
+     * Http Post request for "/register"
      * Registers new User with given information in account object
      * Checks if username is taken
      * Checks if password and username are correct

@@ -6,15 +6,16 @@
 package cz.muni.fi.pb138.cvmanager.controller;
 
 import cz.muni.fi.pb138.cvmanager.service.PDFgenerator;
-import java.io.InputStream;
-import java.io.PrintWriter;
-import javax.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.FileCopyUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+
+import javax.servlet.http.HttpServletResponse;
+import java.io.InputStream;
+import java.io.PrintWriter;
 
 
 /**
@@ -27,7 +28,13 @@ public class PDFcontroller extends BaseController {
      @Autowired
     private PDFgenerator pdfGenerator;
 
-
+    /**
+     * Http Get request for "/auth/download"
+     * Converts cv from xml format to latex and uploads pdf to users pc
+     *
+     * @param lang     language of  cv in downloaded pdf
+     * @param response http server response
+     */
     @RequestMapping(value = "/auth/download", method = RequestMethod.GET)
     public void downloadPDF(@RequestParam("l") String lang, HttpServletResponse response)
     {
