@@ -36,9 +36,17 @@ public class PDFgenerator {
     
     @Autowired
     private XmlService xmlService;
-        
 
 
+    /**
+     * Translates .xml curriculum vitae document into .tex file
+     * @param username name of user whose is the CV
+     * @param lang language to export (sk/en)
+     * @throws TransformerException
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
     public void xmlToLatex(String username, String lang)
             throws TransformerException, ParserConfigurationException, IOException, SAXException
     {
@@ -52,6 +60,14 @@ public class PDFgenerator {
     }
 
 
+    /**
+     * By external calling pdflatex function of laTex generates pdf curriculum vitae document from .tex file
+     * @param username name of user whose is the CV
+     * @return language to export (sk/en)
+     * @throws IOException
+     * @throws InterruptedException
+     * @throws NullPointerException
+     */
     public InputStream latexToPdf(String username)
             throws IOException, InterruptedException, NullPointerException
     {
