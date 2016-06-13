@@ -27,6 +27,9 @@
 			This web application provides users with possibility to easily create their own nice structured CV. <br/>
 			The application allows to create user profile, due to it the user can manage his information for the CV. He can fill, remove or change these information any time he wants.
 			Further it is possible to download the CV either in English or Slovak translation of static parts (headlines, subheadlines and so on) as a PDF file.
+			</br>
+			LaTex and PostgreSQL must be installed on server where this application is running.
+			Links to home pages of neccessary tool are provided down on this page.
         </p>
 
         <h3>Used technologies</h3>
@@ -50,11 +53,14 @@
                 </td>
             </tr>
             <tr>
-                <td>Backend of the application is programmed using Java programming language.</td>
+                <td>Backend of the application is programmed using Java programming language.
+				</td>
                 <td>Dependencies are managed using the Maven Building tool. Tomcat plugin is used for deploying.
-                </td>
+					<a href="https://maven.apache.org/">home page</a>
+				</td>
                 <td>Dependency Injection is managed using Spring Framework. Login services are provided by Spring Security.
                     Controllers are implemented using Spring MVC.
+					<a href="https://spring.io/">home page</a>
                 </td>
             </tr>
         </table>
@@ -103,12 +109,15 @@
             <tr>
                 <td>
                     User login data are stored in PostgreSQL.
+					<a href="https://www.postgresql.org/">home page</a>
                 </td>
                 <td>
-                    Servlet container
+                    Servlet container.
+					<a href="http://tomcat.apache.org/">home page</a>
                 </td>
                 <td>
                     Framework for object-related mapping.
+					<a href="http://hibernate.org/">home page</a>
                 </td>
             </tr>
         </table>
@@ -129,16 +138,18 @@
             </tr>
             <tr>
                 <td>
-                   	LaTex is used to transform XML stored CV into PDF document
+                   	LaTex is used to transform XML stored CV into PDF document.
+					<a href="https://www.latex-project.org/">home page</a>
                 </td>
                 <td>
-                    XML is used to store users' CVs 
+                    XML is used to store users' CVs.
                 </td>
 				<td>
-					PDF file format is used to export the CV
+					PDF file format is used to export the CV.
                 </td>
             </tr>
         </table>
+
 
         <h3>Backend description</h3>
         <p>
