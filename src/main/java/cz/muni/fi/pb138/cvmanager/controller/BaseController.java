@@ -17,6 +17,11 @@ import org.springframework.stereotype.Controller;
 @Controller
 public class BaseController {
 
+    /**
+     * Finds out and returns name of currently logged in user
+     *
+     * @return name of currently logged in user
+     */
     protected String getPrincipalUsername() {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) auth.getPrincipal();

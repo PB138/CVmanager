@@ -9,6 +9,7 @@ import javax.persistence.Transient;
 /**
  * Created by zeman on 17-May-16.
  */
+
 @Entity
 public class Account {
 
@@ -19,22 +20,14 @@ public class Account {
     @Column(nullable=false)
     private String password;
 
-
     @Column(nullable=false, length=64)
     private String role;
 
     @Column(nullable=false)
     private boolean enabled;
 
-
     @Transient
     private String retypePassword;
-
-
-
-
-
-
 
     public String getUsername() {
         return username;
@@ -54,12 +47,15 @@ public class Account {
 
     public Account() {
     }
+
     public Account(String username, String password, String role) {
         this(username,password,role,true);
     }
+
     public Account(String username, String password) {
         this(username,password,"ROLE_USER",true);
     }
+
     public Account(String username, String password, String role, boolean enabled) {
         this.username = username;
         this.password = password;
